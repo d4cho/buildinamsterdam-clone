@@ -1,0 +1,21 @@
+.container {
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.logo {
+    font-weight: bold;
+}
+
+.awards_container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}

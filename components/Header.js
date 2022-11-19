@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../styles/Header.module.css';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const Header = () => {
     return (
@@ -10,7 +11,9 @@ const Header = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 2.2 }}
             >
-                <div className={styles.logo}>BiA.</div>
+                <Link href={'/'}>
+                    <div className={styles.logo}>BiA.</div>
+                </Link>
             </motion.div>
         </div>
     );

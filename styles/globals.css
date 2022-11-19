@@ -65,3 +65,9 @@ h6 {
 * {
     --color-off-white: #f2efe6;
 }
+
+/* others */
+a {
+    text-decoration: none;
+    color: inherit;
+}

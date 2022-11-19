@@ -14,7 +14,7 @@ const Home = () => {
                 <meta name='description' content='buildinamsterdam clone' />
             </Head>
 
-            <Header />
+            {/* <Header /> */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

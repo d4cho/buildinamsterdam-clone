@@ -3,7 +3,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
-import Header from '../components/Header';
 import { motion } from 'framer-motion';
 
 const Home = () => {
@@ -14,7 +13,6 @@ const Home = () => {
                 <meta name='description' content='buildinamsterdam clone' />
             </Head>
 
-            {/* <Header /> */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -79,6 +77,7 @@ const Home = () => {
                     </div>
                 </motion.div>
             </div>
+
             <div className={styles.bottom}>bottom</div>
         </div>
     );

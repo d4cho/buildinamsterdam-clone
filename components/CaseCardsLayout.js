@@ -5,12 +5,15 @@ import { getTotalScrollable } from '../utils/functions';
 const CaseCardsLayout = () => {
     const leftColRef = useRef();
     const rightColRef = useRef();
-    const colHeightDiff =
-        leftColRef.current.offsetHeight - rightColRef.current.offsetHeight;
 
     const [percentToScroll, setPercentToScroll] = useState(0);
+    const [colHeightDiff, setColHeightDiff] = useState(0);
 
     useEffect(() => {
+        setColHeightDiff(
+            leftColRef.current.offsetHeight - rightColRef.current.offsetHeight
+        );
+
         const onScroll = () => {
             const rightColOffsetTop = rightColRef.current.offsetTop;
             const totalScrollableAfterEl =

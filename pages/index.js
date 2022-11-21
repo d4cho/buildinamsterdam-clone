@@ -80,7 +80,13 @@ const Home = () => {
             </div>
 
             <div className={styles.bottom}>
-                <CaseCardsLayout />
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 2.2 }}
+                >
+                    <CaseCardsLayout />
+                </motion.div>
             </div>
         </div>
     );

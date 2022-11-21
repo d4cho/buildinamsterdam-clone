@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import { motion } from 'framer-motion';
+import CaseCardsLayout from '../components/CaseCardsLayout';
 
 const Home = () => {
     return (
@@ -78,7 +79,9 @@ const Home = () => {
                 </motion.div>
             </div>
 
-            <div className={styles.bottom}>bottom</div>
+            <div className={styles.bottom}>
+                <CaseCardsLayout />
+            </div>
         </div>
     );
 };

@@ -5,8 +5,12 @@ import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import { motion } from 'framer-motion';
 import CaseCardsLayout from '../components/CaseCardsLayout';
+import { cardsImages } from '../assets/data/home-data';
 
 const Home = () => {
+    const leftColImages = cardsImages.filter((img) => img.col === 'left');
+    const rightColImages = cardsImages.filter((img) => img.col === 'right');
+
     return (
         <div className={styles.container}>
             <Head>
@@ -85,7 +89,10 @@ const Home = () => {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 2.2 }}
                 >
-                    <CaseCardsLayout />
+                    <CaseCardsLayout
+                        leftColImages={leftColImages}
+                        rightColImages={rightColImages}
+                    />
                 </motion.div>
             </div>
         </div>

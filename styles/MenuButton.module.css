@@ -82,19 +82,14 @@
 
 @media only screen and (min-width: 1024px) {
     .container:hover > .wrapper {
-        transition: scale 0.3s linear;
+        transition: scale 0.2s linear;
         scale: 1.05;
     }
 
     .wrapper {
         width: 84px;
         height: 84px;
-        transition: scale 0.3s linear;
-    }
-
-    .container:hover .curve_text_animation {
-        transform: scale(1) rotate(125deg);
-        transition: transform 0.3s linear;
+        transition: scale 0.2s linear;
     }
 
     .curve {
@@ -104,7 +99,20 @@
 
     .curve_text_animation {
         animation: none;
+    }
+
+    .container:hover .curve_text_animation {
+        transform: scale(1) rotate(125deg);
+        transition: transform 0.2s linear;
+    }
+
+    .initial {
         transform: scale(0.6) rotate(50deg);
-        transition: transform 0.3s linear;
+        transition: transform 0.2s linear;
+    }
+
+    .exit {
+        transform: scale(0.5) rotate(200deg);
+        transition: transform 0.2s linear;
     }
 }

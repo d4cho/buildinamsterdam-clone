@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles/MenuButton.module.css';
 import { motion } from 'framer-motion';
 
 const MenuButton = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [touched, setTouched] = useState(false);
+
+    const handleMouseLeave = () => {
+        setTimeout(() => {
+            setTouched(false);
+        }, 300);
+    };
 
     return (
-        <div className={styles.container}>
+        <div
+            className={styles.container}
+            onMouseEnter={() => setTouched(true)}
+            onMouseLeave={handleMouseLeave}
+        >
             <motion.div
                 className={[
                     styles.wrapper,
@@ -30,9 +41,16 @@ const MenuButton = () => {
                     viewBox='0 0 500 500'
                     className={[
                         styles.curve,
+                        // mobile
                         isMenuOpen
                             ? styles.menu_open
                             : styles.curve_text_animation,
+                        // desktop
+                        isMenuOpen
+                            ? ''
+                            : touched
+                            ? styles.exit
+                            : styles.initial,
                     ].join(' ')}
                 >
                     <path

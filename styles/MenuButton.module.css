@@ -1,4 +1,8 @@
 .container {
+    cursor: pointer;
+}
+
+.wrapper {
     position: fixed;
     left: 50%;
     top: 90vh;
@@ -13,7 +17,6 @@
 }
 
 .curve {
-    /* border: 1px solid green; */
     font-size: 80px;
     position: fixed;
     left: 50%;
@@ -22,6 +25,9 @@
     translate: -50% -50%;
     width: 100px;
     height: 100px;
+}
+
+.menu_open {
     transform: rotate(125deg);
 }
 
@@ -71,5 +77,34 @@
     50%,
     100% {
         transform: scale(0.5) rotate(200deg);
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .container:hover > .wrapper {
+        transition: scale 0.3s linear;
+        scale: 1.05;
+    }
+
+    .wrapper {
+        width: 84px;
+        height: 84px;
+        transition: scale 0.3s linear;
+    }
+
+    .container:hover .curve_text_animation {
+        transform: scale(1) rotate(125deg);
+        transition: transform 0.3s linear;
+    }
+
+    .curve {
+        width: 130px;
+        height: 130px;
+    }
+
+    .curve_text_animation {
+        animation: none;
+        transform: scale(0.6) rotate(50deg);
+        transition: transform 0.3s linear;
     }
 }

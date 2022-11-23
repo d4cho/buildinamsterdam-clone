@@ -6,10 +6,10 @@ const MenuButton = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <>
+        <div className={styles.container}>
             <motion.div
                 className={[
-                    styles.container,
+                    styles.wrapper,
                     isMenuOpen ? styles.blue : styles.orange,
                 ].join(' ')}
                 initial={{ y: 200 }}
@@ -30,7 +30,9 @@ const MenuButton = () => {
                     viewBox='0 0 500 500'
                     className={[
                         styles.curve,
-                        isMenuOpen ? '' : styles.curve_text_animation,
+                        isMenuOpen
+                            ? styles.menu_open
+                            : styles.curve_text_animation,
                     ].join(' ')}
                 >
                     <path
@@ -45,7 +47,7 @@ const MenuButton = () => {
                     </text>
                 </svg>
             </motion.div>
-        </>
+        </div>
     );
 };
 

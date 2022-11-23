@@ -11,7 +11,12 @@ const Home = () => {
     const rightColImages = cardsImages.filter((img) => img.col === 'right');
 
     return (
-        <div className={styles.container}>
+        <motion.div
+            className={styles.container}
+            initial={{ height: '200vh' }}
+            animate={{ height: 'auto' }}
+            transition={{ delay: 2.2 }}
+        >
             <Head>
                 <title>Clone | Build in Amsterdam | Home</title>
                 <meta name='description' content='buildinamsterdam clone' />
@@ -83,19 +88,19 @@ const Home = () => {
                 </motion.div>
             </div>
 
-            <div className={styles.bottom}>
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 2.2 }}
-                >
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 2.2 }}
+            >
+                <div className={styles.bottom}>
                     <CaseCardsLayout
                         leftColImages={leftColImages}
                         rightColImages={rightColImages}
                     />
-                </motion.div>
-            </div>
-        </div>
+                </div>
+            </motion.div>
+        </motion.div>
     );
 };
 

@@ -1,15 +1,34 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { useAppContext } from '../context/AppContext';
 import styles from '../styles/CaseCardsLayout.module.css';
 import { getTotalScrollable } from '../utils/functions';
 import CaseCards from './CaseCards';
 
 const CaseCardsLayout = ({ leftColImages, rightColImages }) => {
+    const { isMobileView } = useAppContext();
     const leftColRef = useRef();
     const rightColRef = useRef();
 
     const [percentToScroll, setPercentToScroll] = useState(0);
     const [colHeightDiff, setColHeightDiff] = useState(0);
 
+    // for auto scroll down page
+    useEffect(() => {
+        const pageScroll = () => {
+            window.scrollBy(0, 0.5);
+            setTimeout(pageScroll, 20);
+        };
+        let startScroll = setTimeout(() => {
+            pageScroll();
+        }, 4200);
+
+        // stop auto scroll if mobile view
+        if (isMobileView) {
+            clearTimeout(startScroll);
+        }
+    }, [isMobileView]);
+
+    // for offset scrolling left and right columns
     useEffect(() => {
         setColHeightDiff(
             leftColRef.current.offsetHeight - rightColRef.current.offsetHeight

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from '../styles/MenuButton.module.css';
 import { motion } from 'framer-motion';
+import { useAppContext } from '../context/AppContext';
 
 const MenuButton = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { isMenuOpen, setIsMenuOpen } = useAppContext();
     const [touched, setTouched] = useState(false);
 
     const handleMouseLeave = () => {
@@ -23,8 +24,8 @@ const MenuButton = () => {
                     styles.wrapper,
                     isMenuOpen ? styles.blue : styles.orange,
                 ].join(' ')}
-                initial={{ y: 200 }}
-                animate={{ y: 0 }}
+                initial={{ y: 200, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.4, ease: 'easeIn', delay: 2.2 }}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
@@ -33,8 +34,8 @@ const MenuButton = () => {
                 </nav>
             </motion.div>
             <motion.div
-                initial={{ y: 200 }}
-                animate={{ y: 0 }}
+                initial={{ y: 200, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.4, ease: 'easeIn', delay: 2.2 }}
             >
                 <svg

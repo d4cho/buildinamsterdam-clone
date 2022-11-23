@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
         <div className={styles.container}>
             <Header />
             <MenuButton />
-            {children}
+            <div>{children}</div>
         </div>
     );
 };

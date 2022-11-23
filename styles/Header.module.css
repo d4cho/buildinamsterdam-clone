@@ -20,3 +20,14 @@
     flex-direction: column;
     align-items: flex-end;
 }
+
+@media only screen and (min-width: 1024px) {
+    .container {
+        position: fixed;
+        padding: 30px 24px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+}

@@ -90,6 +90,7 @@
     .awards_container {
         position: fixed;
         z-index: 1;
+        padding: 30px 24px;
     }
 
     .top {

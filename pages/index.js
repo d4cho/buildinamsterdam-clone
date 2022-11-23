@@ -74,6 +74,7 @@ const Home = () => {
                             While buying decisions are based on emotion.
                         </div>
                         <div className={styles.link_container}>
+                            <div className={styles.dot}></div>
                             <Link className={styles.link} href={'/about'}>
                                 about us
                             </Link>

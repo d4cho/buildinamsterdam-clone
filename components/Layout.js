@@ -3,6 +3,7 @@ import Header from './Header';
 import MenuButton from './MenuButton';
 import styles from '../styles/Layout.module.css';
 import { useAppContext } from '../context/AppContext';
+import Navbar from './Navbar';
 
 const Layout = ({ children }) => {
     const { isMenuOpen } = useAppContext();
@@ -10,21 +11,16 @@ const Layout = ({ children }) => {
     return (
         <div className={styles.container}>
             <div
-                className={[styles.testtest, isMenuOpen && styles.move_up].join(
-                    ' '
-                )}
+                className={[
+                    styles.page_content,
+                    isMenuOpen && styles.move_up,
+                ].join(' ')}
             >
                 <Header />
                 {children}
             </div>
             <MenuButton />
-            <div
-                className={[styles.test, isMenuOpen && styles.grow_up].join(
-                    ' '
-                )}
-            >
-                test
-            </div>
+            <Navbar />
         </div>
     );
 };

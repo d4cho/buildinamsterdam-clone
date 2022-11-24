@@ -28,6 +28,7 @@
     padding: 3vh 0;
     transform: translateY(-120%) scale(0.9);
     transition: transform 0.65s cubic-bezier(0.45, 0.02, 0.09, 0.98) 0s;
+    overflow-x: scroll;
 }
 
 .show_nav_items {
@@ -36,9 +37,19 @@
 }
 
 .nav_flex {
-    overflow-x: scroll;
     display: flex;
     align-items: center;
     column-gap: 1rem;
     padding: 0 1rem;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.nav_items_wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge add Firefox */
+.nav_items_wrapper {
+    -ms-overflow-style: none;
+    scrollbar-width: none; /* Firefox */
 }

@@ -60,7 +60,12 @@ const MenuButton = () => {
                         fill='transparent'
                     />
                     <text width='500'>
-                        <textPath href='#curve'>
+                        <textPath
+                            href='#curve'
+                            style={{
+                                fill: isMenuOpen ? '#fff' : '#000',
+                            }}
+                        >
                             {isMenuOpen ? 'Close' : 'Menu'}
                         </textPath>
                     </text>

@@ -2,3 +2,25 @@
     width: 100%;
     height: 100%;
 }
+
+.testtest {
+    transition: all 0.5s ease-in-out;
+}
+
+.move_up {
+    translate: 0 -400px;
+}
+
+.test {
+    height: 0px;
+    background-color: #000;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    transition: height 0.5s ease-in-out;
+}
+
+.grow_up {
+    height: 400px;
+}

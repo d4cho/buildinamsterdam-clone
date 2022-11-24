@@ -5,7 +5,7 @@ import { getTotalScrollable } from '../utils/functions';
 import CaseCards from './CaseCards';
 
 const CaseCardsLayout = ({ leftColImages, rightColImages }) => {
-    const { isMobileView } = useAppContext();
+    const { isMobileView, isMenuOpen } = useAppContext();
     const leftColRef = useRef();
     const rightColRef = useRef();
 

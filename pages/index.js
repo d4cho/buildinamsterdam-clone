@@ -5,16 +5,18 @@ import styles from '../styles/Home.module.css';
 import { motion } from 'framer-motion';
 import CaseCardsLayout from '../components/CaseCardsLayout';
 import { cardsImages } from '../assets/data/home-data';
+import { useAppContext } from '../context/AppContext';
 
 const Home = () => {
+    const { isMobileView } = useAppContext();
     const leftColImages = cardsImages.filter((img) => img.col === 'left');
     const rightColImages = cardsImages.filter((img) => img.col === 'right');
 
     return (
         <motion.div
             className={styles.container}
-            initial={{ height: '200vh' }}
-            animate={{ height: 'auto' }}
+            initial={{ backgroundColor: '#f2efe6' }}
+            animate={{ backgroundColor: '#fff' }}
             transition={{ delay: 2.2 }}
         >
             <Head>
@@ -23,15 +25,14 @@ const Home = () => {
             </Head>
 
             <motion.div
+                className={styles.awards_container}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 2.2 }}
             >
-                <div className={styles.awards_container}>
-                    <div className={styles.awards}>AWWWARDS</div>
-                    <div className={styles.awards_details}>
-                        E-commerce of the Year '17, '18, '19 & '20
-                    </div>
+                <div className={styles.awards}>AWWWARDS</div>
+                <div className={styles.awards_details}>
+                    E-commerce of the Year '17, '18, '19 & '20
                 </div>
             </motion.div>
 
@@ -39,21 +40,21 @@ const Home = () => {
                 <h1 className={styles.heading_container}>
                     <motion.div
                         initial={{ height: 0 }}
-                        animate={{ height: 60 }}
+                        animate={{ height: isMobileView ? 60 : 70 }}
                         transition={{ delay: 0 }}
                     >
                         <div className={styles.heading}>we build</div>
                     </motion.div>
                     <motion.div
                         initial={{ height: 0 }}
-                        animate={{ height: 60 }}
+                        animate={{ height: isMobileView ? 60 : 70 }}
                         transition={{ delay: 0.4 }}
                     >
                         <div className={styles.heading}>digital</div>
                     </motion.div>
                     <motion.div
                         initial={{ height: 0 }}
-                        animate={{ height: 60 }}
+                        animate={{ height: isMobileView ? 60 : 70 }}
                         transition={{ delay: 0.8 }}
                     >
                         <div className={[styles.heading, styles.ml].join(' ')}>
@@ -62,7 +63,7 @@ const Home = () => {
                     </motion.div>
                     <motion.div
                         initial={{ height: 0 }}
-                        animate={{ height: 60 }}
+                        animate={{ height: isMobileView ? 60 : 70 }}
                         transition={{ delay: 1.2 }}
                     >
                         <div className={styles.heading}>stores</div>
@@ -88,18 +89,18 @@ const Home = () => {
                 </motion.div>
             </div>
 
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 2.2 }}
-            >
-                <div className={styles.bottom}>
+            <div className={styles.bottom}>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 2.2 }}
+                >
                     <CaseCardsLayout
                         leftColImages={leftColImages}
                         rightColImages={rightColImages}
                     />
-                </div>
-            </motion.div>
+                </motion.div>
+            </div>
         </motion.div>
     );
 };

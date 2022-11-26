@@ -10,7 +10,7 @@ export const AppContextProvider = ({ children }) => {
     useEffect(() => {
         if (window.matchMedia('(max-width: 1024px)').matches) {
             setView('mobile');
-        } else if (window.matchMedia('(max-width: 1440px)').matches) {
+        } else if (window.matchMedia('(max-width: 2000px)').matches) {
             setView('desktop');
         } else {
             setView('largeDesktop');
@@ -27,7 +27,7 @@ export const AppContextProvider = ({ children }) => {
             });
 
         window
-            .matchMedia('(max-width: 1440px)')
+            .matchMedia('(max-width: 2000px)')
             .addEventListener('change', (e) => {
                 if (e.matches) {
                     setView('desktop');
@@ -38,8 +38,6 @@ export const AppContextProvider = ({ children }) => {
     }, []);
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    console.log(view);
 
     return (
         <AppContext.Provider

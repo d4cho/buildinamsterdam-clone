@@ -1,5 +1,5 @@
 .container {
-    min-width: 350px;
+    min-width: 140px;
     cursor: pointer;
 }
 
@@ -39,4 +39,16 @@
     border-radius: 10px;
     object-fit: cover;
     object-position: 50% 50%;
+}
+
+@media only screen and (min-width: 1024px) {
+    .container {
+        min-width: 350px;
+    }
+}
+
+@media only screen and (min-width: 2000px) {
+    .container {
+        min-width: 550px;
+    }
 }

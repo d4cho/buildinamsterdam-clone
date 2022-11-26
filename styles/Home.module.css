@@ -162,3 +162,26 @@
         font-size: 16px;
     }
 }
+
+@media only screen and (min-width: 1440px) {
+    .top {
+        padding: 20rem 5vw 3.75rem 4vw;
+    }
+
+    .heading_container {
+        height: 480px;
+    }
+
+    .heading {
+        font-size: 135px;
+        height: 120px;
+    }
+
+    .text {
+        font-size: 34px;
+    }
+
+    .link {
+        font-size: 20px;
+    }
+}

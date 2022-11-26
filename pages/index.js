@@ -8,9 +8,15 @@ import { cardsImages } from '../assets/data/home-data';
 import { useAppContext } from '../context/AppContext';
 
 const Home = () => {
-    const { isMobileView } = useAppContext();
+    const { view } = useAppContext();
     const leftColImages = cardsImages.filter((img) => img.col === 'left');
     const rightColImages = cardsImages.filter((img) => img.col === 'right');
+
+    const getHeadingHeight = () => {
+        if (view === 'mobile') return 60;
+        if (view === 'desktop') return 70;
+        if (view === 'largeDesktop') return 120;
+    };
 
     return (
         <motion.div
@@ -40,21 +46,21 @@ const Home = () => {
                 <h1 className={styles.heading_container}>
                     <motion.div
                         initial={{ height: 0 }}
-                        animate={{ height: isMobileView ? 60 : 70 }}
+                        animate={{ height: getHeadingHeight(view) }}
                         transition={{ delay: 0 }}
                     >
                         <div className={styles.heading}>we build</div>
                     </motion.div>
                     <motion.div
                         initial={{ height: 0 }}
-                        animate={{ height: isMobileView ? 60 : 70 }}
+                        animate={{ height: getHeadingHeight(view) }}
                         transition={{ delay: 0.4 }}
                     >
                         <div className={styles.heading}>digital</div>
                     </motion.div>
                     <motion.div
                         initial={{ height: 0 }}
-                        animate={{ height: isMobileView ? 60 : 70 }}
+                        animate={{ height: getHeadingHeight(view) }}
                         transition={{ delay: 0.8 }}
                     >
                         <div className={[styles.heading, styles.ml].join(' ')}>
@@ -63,7 +69,7 @@ const Home = () => {
                     </motion.div>
                     <motion.div
                         initial={{ height: 0 }}
-                        animate={{ height: isMobileView ? 60 : 70 }}
+                        animate={{ height: getHeadingHeight(view) }}
                         transition={{ delay: 1.2 }}
                     >
                         <div className={styles.heading}>stores</div>

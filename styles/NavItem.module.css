@@ -12,7 +12,7 @@
     opacity: 0;
     transition: translate 0.2s linear, opacity 0.2s linear;
 }
-.container:hover > .dot {
+.container:hover .dot {
     transition: translate 0.2s linear, opacity 0.2s linear;
     translate: 0px 17px;
     opacity: 1;
@@ -26,7 +26,7 @@
     font-weight: bold;
     transition: translate 0.2s linear;
 }
-.container:hover > .title {
+.container:hover .title {
     transition: translate 0.2s linear;
     translate: 15px 0px;
 }

@@ -3,7 +3,7 @@ import styles from '../styles/CaseCards.module.css';
 import Image from 'next/image';
 
 const CaseCards = ({ imageData }) => {
-    const { url, title, desc, textColorOverride } = imageData;
+    const { url, title, desc, textColorOverride, tag } = imageData;
 
     return (
         <div className={styles.container}>
@@ -25,6 +25,7 @@ const CaseCards = ({ imageData }) => {
                     <span className={styles.desc}>{desc}</span>
                 </div>
             </div>
+            {tag && <div className={styles.tag}>{tag}</div>}
         </div>
     );
 };

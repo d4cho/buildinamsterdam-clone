@@ -35,6 +35,24 @@
     line-height: 1.2;
 }
 
+.tag {
+    position: absolute;
+    top: 0.695rem;
+    right: 0.695rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 2.375rem;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    backdrop-filter: blur(0.2rem);
+    font-size: 11px;
+    line-height: 1.2;
+}
+
 @media only screen and (min-width: 1024px) {
     .title {
         font-size: 14px;

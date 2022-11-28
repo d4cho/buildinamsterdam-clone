@@ -3,11 +3,13 @@ import styles from '../../styles/Cases.module.css';
 import { getTotalScrollable } from '../../utils/functions';
 import CaseCards from '../../components/CaseCards';
 import { casesData } from '../../assets/data/cases-data';
+import Filter from '../../components/Filter';
 
 const Cases = () => {
     const leftColRef = useRef();
     const rightColRef = useRef();
 
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [percentToScroll, setPercentToScroll] = useState(0);
     const [colHeightDiff, setColHeightDiff] = useState(0);
 
@@ -44,7 +46,13 @@ const Cases = () => {
 
     return (
         <div className={styles.container}>
-            <div ref={leftColRef} className={styles.left_col}>
+            <div
+                ref={leftColRef}
+                className={[
+                    styles.left_col,
+                    isFilterOpen && styles.move_left_col,
+                ].join(' ')}
+            >
                 {leftColImages.map((imgData, idx) => {
                     return (
                         <div
@@ -56,9 +64,36 @@ const Cases = () => {
                     );
                 })}
             </div>
+
+            {/* filter starts */}
+            <div
+                className={[
+                    styles.filter_container,
+                    isFilterOpen && styles.filter_open,
+                ].join(' ')}
+            >
+                <Filter
+                    isFilterOpen={isFilterOpen}
+                    onClose={() => setIsFilterOpen(false)}
+                />
+            </div>
+            <button
+                className={[
+                    styles.filter_button,
+                    isFilterOpen && styles.hide_filter_button,
+                ].join(' ')}
+                onClick={() => setIsFilterOpen(true)}
+            >
+                filter work
+            </button>
+            {/* filter ends */}
+
             <div
                 ref={rightColRef}
-                className={styles.right_col}
+                className={[
+                    styles.right_col,
+                    isFilterOpen && styles.move_right_col,
+                ].join(' ')}
                 style={{
                     translate: `0 ${percentToScroll * colHeightDiff}px`,
                 }}

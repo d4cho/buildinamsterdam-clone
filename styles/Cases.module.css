@@ -1,4 +1,7 @@
 .container {
+    --filter-width: 65vw;
+
+    position: relative;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -6,11 +9,56 @@
     overflow: hidden;
 }
 
+.filter_container {
+    width: 0vw;
+    height: 100%;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    translate: -50% 0;
+    transition: width 0.35s cubic-bezier(0.45, 0.02, 0.09, 0.98);
+}
+
+.filter_open {
+    transition: width 0.35s cubic-bezier(0.45, 0.02, 0.09, 0.98);
+    width: var(--filter-width);
+}
+
+.filter_button {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    rotate: 90deg;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 1.2;
+    text-transform: uppercase;
+    padding: 1.6em;
+    background-color: transparent;
+    border: none;
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 0.35s cubic-bezier(0.45, 0.02, 0.09, 0.98) 0.35s;
+}
+
+.hide_filter_button {
+    opacity: 0;
+    transition: opacity 0.35s cubic-bezier(0.45, 0.02, 0.09, 0.98);
+}
+
 .left_col {
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
     height: fit-content;
+    transition: transform 0.35s cubic-bezier(0.45, 0.02, 0.09, 0.98) 0s;
+}
+
+.move_left_col {
+    transform: translate(calc(var(--filter-width) / -2));
+    transition: transform 0.35s cubic-bezier(0.45, 0.02, 0.09, 0.98) 0s;
 }
 
 .left_item_container {
@@ -23,6 +71,12 @@
     flex-direction: column;
     row-gap: 1rem;
     height: fit-content;
+    transition: transform 0.35s cubic-bezier(0.45, 0.02, 0.09, 0.98) 0s;
+}
+
+.move_right_col {
+    transform: translate(calc(var(--filter-width) / 2));
+    transition: transform 0.35s cubic-bezier(0.45, 0.02, 0.09, 0.98) 0s;
 }
 
 .right_item_container {

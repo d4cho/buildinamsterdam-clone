@@ -5,6 +5,7 @@ import CaseCards from '../../components/CaseCards';
 import { casesData } from '../../assets/data/cases-data';
 import Filter from '../../components/Filter';
 import { useAppContext } from '../../context/AppContext';
+import { motion } from 'framer-motion';
 
 const Cases = () => {
     const { isFilterOpen, setIsFilterOpen, selectedFilter } = useAppContext();
@@ -71,33 +72,39 @@ const Cases = () => {
 
     return (
         <div className={styles.container}>
-            <div
-                ref={leftColRef}
-                className={[
-                    styles.left_col,
-                    isFilterOpen && styles.move_left_col,
-                ].join(' ')}
+            <motion.div
+                initial={{ y: 100, opacity: 0.5 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
             >
-                {leftColImages.map((imgData, idx) => {
-                    return (
-                        <div
-                            key={'left' + idx}
-                            className={styles.left_item_container}
-                        >
-                            <CaseCards
-                                imageData={imgData}
-                                isBlurred={
-                                    selectedFilter
-                                        ? !imgData.filterBy.includes(
-                                              selectedFilter
-                                          )
-                                        : false
-                                }
-                            />
-                        </div>
-                    );
-                })}
-            </div>
+                <div
+                    ref={leftColRef}
+                    className={[
+                        styles.left_col,
+                        isFilterOpen && styles.move_left_col,
+                    ].join(' ')}
+                >
+                    {leftColImages.map((imgData, idx) => {
+                        return (
+                            <div
+                                key={'left' + idx}
+                                className={styles.left_item_container}
+                            >
+                                <CaseCards
+                                    imageData={imgData}
+                                    isBlurred={
+                                        selectedFilter
+                                            ? !imgData.filterBy.includes(
+                                                  selectedFilter
+                                              )
+                                            : false
+                                    }
+                                />
+                            </div>
+                        );
+                    })}
+                </div>
+            </motion.div>
 
             {/* filter starts */}
             <div
@@ -119,36 +126,42 @@ const Cases = () => {
             </button>
             {/* filter ends */}
 
-            <div
-                ref={rightColRef}
-                className={[
-                    styles.right_col,
-                    isFilterOpen && styles.move_right_col,
-                ].join(' ')}
-                style={{
-                    translate: `0 ${percentToScroll * colHeightDiff}px`,
-                }}
+            <motion.div
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
             >
-                {rightColImages.map((imgData, idx) => {
-                    return (
-                        <div
-                            key={'right' + idx}
-                            className={styles.right_item_container}
-                        >
-                            <CaseCards
-                                imageData={imgData}
-                                isBlurred={
-                                    selectedFilter
-                                        ? !imgData.filterBy.includes(
-                                              selectedFilter
-                                          )
-                                        : false
-                                }
-                            />
-                        </div>
-                    );
-                })}
-            </div>
+                <div
+                    ref={rightColRef}
+                    className={[
+                        styles.right_col,
+                        isFilterOpen && styles.move_right_col,
+                    ].join(' ')}
+                    style={{
+                        translate: `0 ${percentToScroll * colHeightDiff}px`,
+                    }}
+                >
+                    {rightColImages.map((imgData, idx) => {
+                        return (
+                            <div
+                                key={'right' + idx}
+                                className={styles.right_item_container}
+                            >
+                                <CaseCards
+                                    imageData={imgData}
+                                    isBlurred={
+                                        selectedFilter
+                                            ? !imgData.filterBy.includes(
+                                                  selectedFilter
+                                              )
+                                            : false
+                                    }
+                                />
+                            </div>
+                        );
+                    })}
+                </div>
+            </motion.div>
         </div>
     );
 };

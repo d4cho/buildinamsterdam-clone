@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../styles/CaseCards.module.css';
 import Image from 'next/image';
 
-const CaseCards = ({ imageData }) => {
+const CaseCards = ({ imageData, isBlurred }) => {
     const { url, title, desc, textColorOverride, tag } = imageData;
 
     return (
@@ -26,6 +26,7 @@ const CaseCards = ({ imageData }) => {
                 </div>
             </div>
             {tag && <div className={styles.tag}>{tag}</div>}
+            {isBlurred && <div className={styles.blurred}></div>}
         </div>
     );
 };

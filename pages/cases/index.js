@@ -15,8 +15,31 @@ const Cases = () => {
     const [percentToScroll, setPercentToScroll] = useState(0);
     const [colHeightDiff, setColHeightDiff] = useState(0);
 
-    const leftColImages = casesData.filter((item) => item.col === 'left');
-    const rightColImages = casesData.filter((item) => item.col === 'right');
+    const [leftColImages, setLeftColImages] = useState([]);
+    const [rightColImages, setRightColImages] = useState([]);
+
+    // filter casesData then divide into 2 columns
+    useEffect(() => {
+        let filteredCases = casesData.filter((imgData) =>
+            imgData.filterBy.includes(selectedFilter)
+        );
+        let leftoverCases = casesData.filter(
+            (imgData) => !imgData.filterBy.includes(selectedFilter)
+        );
+
+        let filteredOrderedCases = [...filteredCases, ...leftoverCases];
+
+        let left = filteredOrderedCases.filter((imgData, idx) => {
+            if ((idx + 1) % 2 !== 0) return imgData;
+        });
+
+        let right = filteredOrderedCases.filter((imgData, idx) => {
+            if ((idx + 1) % 2 === 0) return imgData;
+        });
+
+        setLeftColImages(left);
+        setRightColImages(right);
+    }, [selectedFilter]);
 
     // for offset scrolling left and right columns
     useEffect(() => {
@@ -44,7 +67,7 @@ const Cases = () => {
 
         // clean up
         return () => window.removeEventListener('scroll', onScroll);
-    }, []);
+    }, [leftColImages, rightColImages]);
 
     return (
         <div className={styles.container}>
@@ -61,7 +84,16 @@ const Cases = () => {
                             key={'left' + idx}
                             className={styles.left_item_container}
                         >
-                            <CaseCards imageData={imgData} />
+                            <CaseCards
+                                imageData={imgData}
+                                isBlurred={
+                                    selectedFilter
+                                        ? !imgData.filterBy.includes(
+                                              selectedFilter
+                                          )
+                                        : false
+                                }
+                            />
                         </div>
                     );
                 })}
@@ -103,7 +135,16 @@ const Cases = () => {
                             key={'right' + idx}
                             className={styles.right_item_container}
                         >
-                            <CaseCards imageData={imgData} />
+                            <CaseCards
+                                imageData={imgData}
+                                isBlurred={
+                                    selectedFilter
+                                        ? !imgData.filterBy.includes(
+                                              selectedFilter
+                                          )
+                                        : false
+                                }
+                            />
                         </div>
                     );
                 })}

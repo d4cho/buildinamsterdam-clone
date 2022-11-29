@@ -39,6 +39,8 @@ export const AppContextProvider = ({ children }) => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
+
     const [selectedFilter, setSelectedFilter] = useState('');
 
     return (
@@ -47,6 +49,8 @@ export const AppContextProvider = ({ children }) => {
                 view,
                 isMenuOpen,
                 setIsMenuOpen,
+                isFilterOpen,
+                setIsFilterOpen,
                 selectedFilter,
                 setSelectedFilter,
             }}

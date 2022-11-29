@@ -4,12 +4,14 @@ import { getTotalScrollable } from '../../utils/functions';
 import CaseCards from '../../components/CaseCards';
 import { casesData } from '../../assets/data/cases-data';
 import Filter from '../../components/Filter';
+import { useAppContext } from '../../context/AppContext';
 
 const Cases = () => {
+    const { isFilterOpen, setIsFilterOpen, selectedFilter } = useAppContext();
+
     const leftColRef = useRef();
     const rightColRef = useRef();
 
-    const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [percentToScroll, setPercentToScroll] = useState(0);
     const [colHeightDiff, setColHeightDiff] = useState(0);
 
@@ -72,10 +74,7 @@ const Cases = () => {
                     isFilterOpen && styles.filter_open,
                 ].join(' ')}
             >
-                <Filter
-                    isFilterOpen={isFilterOpen}
-                    onClose={() => setIsFilterOpen(false)}
-                />
+                <Filter onClose={() => setIsFilterOpen(false)} />
             </div>
             <button
                 className={[
@@ -84,7 +83,7 @@ const Cases = () => {
                 ].join(' ')}
                 onClick={() => setIsFilterOpen(true)}
             >
-                filter work
+                {`filter work ${selectedFilter && '(1)'}`}
             </button>
             {/* filter ends */}
 

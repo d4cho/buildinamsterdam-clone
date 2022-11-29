@@ -3,8 +3,9 @@ import styles from '../styles/Filter.module.css';
 import { filterData } from '../assets/data/filter-data';
 import { useAppContext } from '../context/AppContext';
 
-const Filter = ({ isFilterOpen, onClose }) => {
-    const { selectedFilter, setSelectedFilter } = useAppContext();
+const Filter = () => {
+    const { isFilterOpen, setIsFilterOpen, selectedFilter, setSelectedFilter } =
+        useAppContext();
 
     const handleFilterClick = (filter) => {
         if (filter === selectedFilter) {
@@ -62,7 +63,7 @@ const Filter = ({ isFilterOpen, onClose }) => {
                         </section>
                     );
                 })}
-                <button onClick={onClose}>close</button>
+                <button onClick={() => setIsFilterOpen(false)}>close</button>
             </div>
         </div>
     );

@@ -1,8 +1,19 @@
 import React from 'react';
 import styles from '../styles/Filter.module.css';
 import { filterData } from '../assets/data/filter-data';
+import { useAppContext } from '../context/AppContext';
 
 const Filter = ({ isFilterOpen, onClose }) => {
+    const { selectedFilter, setSelectedFilter } = useAppContext();
+
+    const handleFilterClick = (filter) => {
+        if (filter === selectedFilter) {
+            setSelectedFilter('');
+        } else {
+            setSelectedFilter(filter);
+        }
+    };
+
     return (
         <div className={styles.container}>
             <div
@@ -24,8 +35,24 @@ const Filter = ({ isFilterOpen, onClose }) => {
                                             key={itemIdx}
                                             className={styles.list_item}
                                         >
-                                            <button className={styles.button}>
-                                                <span>{item.title}</span>
+                                            <button
+                                                className={styles.button}
+                                                onClick={() =>
+                                                    handleFilterClick(
+                                                        item.title
+                                                    )
+                                                }
+                                            >
+                                                <span
+                                                    className={
+                                                        item.title ===
+                                                        selectedFilter
+                                                            ? styles.filter_selected
+                                                            : ''
+                                                    }
+                                                >
+                                                    {item.title}
+                                                </span>
                                                 <span>{item.count}</span>
                                             </button>
                                         </li>

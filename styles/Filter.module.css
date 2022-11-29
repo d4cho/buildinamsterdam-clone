@@ -51,3 +51,8 @@
     background-color: transparent;
     border: none;
 }
+
+.filter_selected {
+    color: var(--color-blue);
+    font-style: italic;
+}

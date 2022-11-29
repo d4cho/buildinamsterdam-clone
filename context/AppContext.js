@@ -39,12 +39,16 @@ export const AppContextProvider = ({ children }) => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    const [selectedFilter, setSelectedFilter] = useState('');
+
     return (
         <AppContext.Provider
             value={{
                 view,
                 isMenuOpen,
                 setIsMenuOpen,
+                selectedFilter,
+                setSelectedFilter,
             }}
         >
             {children}

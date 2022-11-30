@@ -4,13 +4,49 @@ import { motion } from 'framer-motion';
 import { useAppContext } from '../context/AppContext';
 
 const MenuButton = () => {
-    const { isMenuOpen, setIsMenuOpen } = useAppContext();
+    const {
+        isMenuOpen,
+        setIsMenuOpen,
+        isFilterOpen,
+        setIsFilterOpen,
+        selectedFilter,
+    } = useAppContext();
     const [touched, setTouched] = useState(false);
 
     const handleMouseLeave = () => {
         setTimeout(() => {
             setTouched(false);
         }, 300);
+    };
+
+    const renderText = () => {
+        let text;
+        if (isFilterOpen) {
+            text = 'Close';
+            if (selectedFilter) {
+                text = 'Apply';
+            }
+            return text;
+        }
+
+        if (isMenuOpen) {
+            return 'Close';
+        }
+
+        return 'Menu';
+    };
+
+    const getColorClass = () => {
+        if (isMenuOpen || (isFilterOpen && selectedFilter)) return styles.blue;
+        return styles.orange;
+    };
+
+    const handleButtonClick = () => {
+        if (isFilterOpen) {
+            setIsFilterOpen(false);
+        } else {
+            setIsMenuOpen(!isMenuOpen);
+        }
     };
 
     return (
@@ -20,14 +56,11 @@ const MenuButton = () => {
             onMouseLeave={handleMouseLeave}
         >
             <motion.div
-                className={[
-                    styles.wrapper,
-                    isMenuOpen ? styles.blue : styles.orange,
-                ].join(' ')}
+                className={[styles.wrapper, getColorClass()].join(' ')}
                 initial={{ y: 200, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.4, ease: 'easeIn', delay: 2.2 }}
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                onClick={handleButtonClick}
             >
                 <nav>
                     <button className={styles.button}></button>
@@ -43,7 +76,7 @@ const MenuButton = () => {
                     className={[
                         styles.curve,
                         // mobile
-                        isMenuOpen
+                        isMenuOpen || isFilterOpen
                             ? styles.menu_open
                             : styles.curve_text_animation,
                         // desktop
@@ -66,7 +99,7 @@ const MenuButton = () => {
                                 fill: isMenuOpen ? '#fff' : '#000',
                             }}
                         >
-                            {isMenuOpen ? 'Close' : 'Menu'}
+                            {renderText()}
                         </textPath>
                     </text>
                 </svg>

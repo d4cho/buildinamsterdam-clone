@@ -8,7 +8,8 @@ import { useAppContext } from '../../context/AppContext';
 import { motion } from 'framer-motion';
 
 const Cases = () => {
-    const { isFilterOpen, setIsFilterOpen, selectedFilter } = useAppContext();
+    const { view, isFilterOpen, setIsFilterOpen, selectedFilter } =
+        useAppContext();
 
     const leftColRef = useRef();
     const rightColRef = useRef();
@@ -16,36 +17,80 @@ const Cases = () => {
     const [percentToScroll, setPercentToScroll] = useState(0);
     const [colHeightDiff, setColHeightDiff] = useState(0);
 
-    const [leftColImages, setLeftColImages] = useState([]);
-    const [rightColImages, setRightColImages] = useState([]);
+    const [imageLists, setImageLists] = useState({
+        mobile: {
+            left: [],
+            right: [],
+        },
+        desktop: {
+            leftLeft: [],
+            left: [],
+            right: [],
+            rightRight: [],
+        },
+    });
 
-    // filter casesData then divide into 2 columns
+    // filter casesData then divide into 2(mobile) and 4(desktop) columns
     useEffect(() => {
-        let filteredCases = casesData.filter((imgData) =>
+        const filteredCases = casesData.filter((imgData) =>
             imgData.filterBy.includes(selectedFilter)
         );
-        let leftoverCases = casesData.filter(
+        const leftoverCases = casesData.filter(
             (imgData) => !imgData.filterBy.includes(selectedFilter)
         );
 
-        let filteredOrderedCases = [...filteredCases, ...leftoverCases];
+        const filteredOrderedCases = [...filteredCases, ...leftoverCases];
+        let mobileLeft = [];
+        let mobileRight = [];
+        let leftLeft = [];
+        let left = [];
+        let right = [];
+        let rightRight = [];
 
-        let left = filteredOrderedCases.filter((imgData, idx) => {
-            if ((idx + 1) % 2 !== 0) return imgData;
+        for (let i = 0; i < filteredOrderedCases.length; i++) {
+            if (i % 2 === 0) {
+                mobileLeft.push(filteredOrderedCases[i]);
+            } else {
+                mobileRight.push(filteredOrderedCases[i]);
+            }
+        }
+
+        for (let i = 0; i < mobileLeft.length; i++) {
+            if (i % 2 === 0) {
+                left.push(mobileLeft[i]);
+            } else {
+                leftLeft.push(mobileLeft[i]);
+            }
+        }
+
+        for (let i = 0; i < mobileRight.length; i++) {
+            if (i % 2 === 0) {
+                right.push(mobileRight[i]);
+            } else {
+                rightRight.push(mobileRight[i]);
+            }
+        }
+
+        setImageLists({
+            ...imageLists,
+            mobile: {
+                left: mobileLeft,
+                right: mobileRight,
+            },
+            desktop: {
+                leftLeft: leftLeft,
+                left: left,
+                right: right,
+                rightRight: rightRight,
+            },
         });
-
-        let right = filteredOrderedCases.filter((imgData, idx) => {
-            if ((idx + 1) % 2 === 0) return imgData;
-        });
-
-        setLeftColImages(left);
-        setRightColImages(right);
     }, [selectedFilter]);
 
     // for offset scrolling left and right columns
     useEffect(() => {
         setColHeightDiff(
-            leftColRef.current.offsetHeight - rightColRef.current.offsetHeight
+            leftColRef?.current?.offsetHeight -
+                rightColRef?.current?.offsetHeight
         );
 
         const onScroll = () => {
@@ -68,44 +113,10 @@ const Cases = () => {
 
         // clean up
         return () => window.removeEventListener('scroll', onScroll);
-    }, [leftColImages, rightColImages]);
+    }, [imageLists, view]);
 
     return (
         <div className={styles.container}>
-            <motion.div
-                initial={{ y: 100, opacity: 0.5 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1 }}
-            >
-                <div
-                    ref={leftColRef}
-                    className={[
-                        styles.left_col,
-                        isFilterOpen && styles.move_left_col,
-                    ].join(' ')}
-                >
-                    {leftColImages.map((imgData, idx) => {
-                        return (
-                            <div
-                                key={'left' + idx}
-                                className={styles.left_item_container}
-                            >
-                                <CaseCards
-                                    imageData={imgData}
-                                    isBlurred={
-                                        selectedFilter
-                                            ? !imgData.filterBy.includes(
-                                                  selectedFilter
-                                              )
-                                            : false
-                                    }
-                                />
-                            </div>
-                        );
-                    })}
-                </div>
-            </motion.div>
-
             {/* filter starts */}
             <div
                 className={[
@@ -126,42 +137,231 @@ const Cases = () => {
             </button>
             {/* filter ends */}
 
-            <motion.div
-                initial={{ y: -100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1 }}
-            >
-                <div
-                    ref={rightColRef}
-                    className={[
-                        styles.right_col,
-                        isFilterOpen && styles.move_right_col,
-                    ].join(' ')}
-                    style={{
-                        translate: `0 ${percentToScroll * colHeightDiff}px`,
-                    }}
-                >
-                    {rightColImages.map((imgData, idx) => {
-                        return (
-                            <div
-                                key={'right' + idx}
-                                className={styles.right_item_container}
-                            >
-                                <CaseCards
-                                    imageData={imgData}
-                                    isBlurred={
-                                        selectedFilter
-                                            ? !imgData.filterBy.includes(
-                                                  selectedFilter
-                                              )
-                                            : false
-                                    }
-                                />
-                            </div>
-                        );
-                    })}
-                </div>
-            </motion.div>
+            {/* responsive card layout starts */}
+            {view === 'mobile' ? (
+                <>
+                    <motion.div
+                        initial={{ y: 100, opacity: 0.5 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 1 }}
+                    >
+                        <div
+                            ref={leftColRef}
+                            className={[
+                                styles.left_col,
+                                isFilterOpen && styles.move_left_col,
+                            ].join(' ')}
+                        >
+                            {imageLists.mobile.left.map((imgData, idx) => {
+                                return (
+                                    <div
+                                        key={'left' + idx}
+                                        className={styles.left_item_container}
+                                    >
+                                        <CaseCards
+                                            imageData={imgData}
+                                            isBlurred={
+                                                selectedFilter
+                                                    ? !imgData.filterBy.includes(
+                                                          selectedFilter
+                                                      )
+                                                    : false
+                                            }
+                                        />
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ y: -100, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 1 }}
+                    >
+                        <div
+                            ref={rightColRef}
+                            className={[
+                                styles.right_col,
+                                isFilterOpen && styles.move_right_col,
+                            ].join(' ')}
+                            style={{
+                                translate: `0 ${
+                                    percentToScroll * colHeightDiff
+                                }px`,
+                            }}
+                        >
+                            {imageLists.mobile.right.map((imgData, idx) => {
+                                return (
+                                    <div
+                                        key={'right' + idx}
+                                        className={styles.right_item_container}
+                                    >
+                                        <CaseCards
+                                            imageData={imgData}
+                                            isBlurred={
+                                                selectedFilter
+                                                    ? !imgData.filterBy.includes(
+                                                          selectedFilter
+                                                      )
+                                                    : false
+                                            }
+                                        />
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </motion.div>
+                </>
+            ) : (
+                <>
+                    <motion.div
+                        initial={{ y: 100, opacity: 0.5 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 1 }}
+                    >
+                        <div
+                            ref={leftColRef}
+                            className={[
+                                styles.left_col,
+                                isFilterOpen && styles.move_left_col,
+                            ].join(' ')}
+                        >
+                            {imageLists.desktop.leftLeft.map((imgData, idx) => {
+                                return (
+                                    <div
+                                        key={'leftLeft' + idx}
+                                        className={styles.left_item_container}
+                                    >
+                                        <CaseCards
+                                            imageData={imgData}
+                                            isBlurred={
+                                                selectedFilter
+                                                    ? !imgData.filterBy.includes(
+                                                          selectedFilter
+                                                      )
+                                                    : false
+                                            }
+                                        />
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </motion.div>
+                    <motion.div
+                        initial={{ y: -100, opacity: 0.5 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 1 }}
+                    >
+                        <div
+                            ref={rightColRef}
+                            className={[
+                                styles.left_col,
+                                isFilterOpen && styles.move_left_col,
+                            ].join(' ')}
+                            style={{
+                                translate: `0 ${
+                                    percentToScroll * colHeightDiff
+                                }px`,
+                            }}
+                        >
+                            {imageLists.desktop.left.map((imgData, idx) => {
+                                return (
+                                    <div
+                                        key={'left' + idx}
+                                        className={styles.right_item_container}
+                                    >
+                                        <CaseCards
+                                            imageData={imgData}
+                                            isBlurred={
+                                                selectedFilter
+                                                    ? !imgData.filterBy.includes(
+                                                          selectedFilter
+                                                      )
+                                                    : false
+                                            }
+                                        />
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </motion.div>
+                    <motion.div
+                        initial={{ y: 100, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 1 }}
+                    >
+                        <div
+                            className={[
+                                styles.right_col,
+                                isFilterOpen && styles.move_right_col,
+                            ].join(' ')}
+                        >
+                            {imageLists.desktop.right.map((imgData, idx) => {
+                                return (
+                                    <div
+                                        key={'right' + idx}
+                                        className={styles.left_item_container}
+                                    >
+                                        <CaseCards
+                                            imageData={imgData}
+                                            isBlurred={
+                                                selectedFilter
+                                                    ? !imgData.filterBy.includes(
+                                                          selectedFilter
+                                                      )
+                                                    : false
+                                            }
+                                        />
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </motion.div>
+                    <motion.div
+                        initial={{ y: -100, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 1 }}
+                    >
+                        <div
+                            className={[
+                                styles.right_col,
+                                isFilterOpen && styles.move_right_col,
+                            ].join(' ')}
+                            style={{
+                                translate: `0 ${
+                                    percentToScroll * colHeightDiff * 2.81 // hacky!
+                                }px`,
+                            }}
+                        >
+                            {imageLists.desktop.rightRight.map(
+                                (imgData, idx) => {
+                                    return (
+                                        <div
+                                            key={'rightRight' + idx}
+                                            className={
+                                                styles.right_item_container
+                                            }
+                                        >
+                                            <CaseCards
+                                                imageData={imgData}
+                                                isBlurred={
+                                                    selectedFilter
+                                                        ? !imgData.filterBy.includes(
+                                                              selectedFilter
+                                                          )
+                                                        : false
+                                                }
+                                            />
+                                        </div>
+                                    );
+                                }
+                            )}
+                        </div>
+                    </motion.div>
+                </>
+            )}
+            {/* responsive card layout ends */}
         </div>
     );
 };

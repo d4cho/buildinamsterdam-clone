@@ -50,9 +50,25 @@
     padding: 0;
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 .filter_selected {
     color: var(--color-blue);
     font-style: italic;
+}
+
+@media only screen and (min-width: 1024px) {
+    .content {
+        row-gap: 4rem;
+        padding: 4.5rem 5rem;
+    }
+
+    .heading {
+        font-size: 16px;
+    }
+
+    .list_item {
+        font-size: 20px;
+    }
 }

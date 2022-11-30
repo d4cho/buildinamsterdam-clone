@@ -86,8 +86,14 @@
 
 @media only screen and (min-width: 1024px) {
     .container {
+        --filter-width: 30vw;
         column-gap: 2rem;
         background-color: #fff;
+    }
+
+    .filter_button {
+        font-size: 12px;
+        cursor: pointer;
     }
 
     .left_col {

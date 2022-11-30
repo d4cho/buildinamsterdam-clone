@@ -63,7 +63,6 @@ const Filter = () => {
                         </section>
                     );
                 })}
-                <button onClick={() => setIsFilterOpen(false)}>close</button>
             </div>
         </div>
     );

@@ -59,13 +59,13 @@ const CaseCardsLayout = ({ leftColImages, rightColImages }) => {
     return (
         <div className={styles.container}>
             <div ref={leftColRef} className={styles.left_col}>
-                {leftColImages.map((imgData, idx) => {
+                {leftColImages.map((caseData, idx) => {
                     return (
                         <div
                             key={'left' + idx}
                             className={styles.left_item_container}
                         >
-                            <CaseCards imageData={imgData} />
+                            <CaseCards caseData={caseData} />
                         </div>
                     );
                 })}
@@ -77,13 +77,13 @@ const CaseCardsLayout = ({ leftColImages, rightColImages }) => {
                     translate: `0 ${percentToScroll * colHeightDiff}px`,
                 }}
             >
-                {rightColImages.map((imgData, idx) => {
+                {rightColImages.map((caseData, idx) => {
                     return (
                         <div
                             key={'right' + idx}
                             className={styles.right_item_container}
                         >
-                            <CaseCards imageData={imgData} />
+                            <CaseCards caseData={caseData} />
                         </div>
                     );
                 })}

@@ -1,0 +1,50 @@
+.container {
+    background-color: aquamarine;
+}
+
+.main {
+    height: 100vh;
+    max-height: 100vh;
+    position: relative;
+    overflow-y: scroll;
+    /* z-index: 1; */
+    scroll-snap-type: y mandatory;
+}
+
+.test1 {
+    background-color: red;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    scroll-snap-align: start end;
+}
+.test2 {
+    background-color: blue;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    scroll-snap-align: start end;
+}
+.test3 {
+    background-color: green;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    scroll-snap-align: start end;
+}
+
+.testtest {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 100vh;
+    scroll-snap-align: start end;
+}

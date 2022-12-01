@@ -13,6 +13,7 @@
 
 .logo {
     font-weight: bold;
+    color: var(--logo-color);
 }
 
 .awards_container {

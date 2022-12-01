@@ -6,6 +6,7 @@ import { casesData } from '../../assets/data/cases-data';
 import Filter from '../../components/Filter';
 import { useAppContext } from '../../context/AppContext';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const Cases = () => {
     const { view, isFilterOpen, setIsFilterOpen, selectedFilter } =
@@ -32,11 +33,11 @@ const Cases = () => {
 
     // filter casesData then divide into 2(mobile) and 4(desktop) columns
     useEffect(() => {
-        const filteredCases = casesData.filter((imgData) =>
-            imgData.filterBy.includes(selectedFilter)
+        const filteredCases = casesData.filter((caseData) =>
+            caseData.filterBy.includes(selectedFilter)
         );
         const leftoverCases = casesData.filter(
-            (imgData) => !imgData.filterBy.includes(selectedFilter)
+            (caseData) => !caseData.filterBy.includes(selectedFilter)
         );
 
         const filteredOrderedCases = [...filteredCases, ...leftoverCases];
@@ -152,22 +153,26 @@ const Cases = () => {
                                 isFilterOpen && styles.move_left_col,
                             ].join(' ')}
                         >
-                            {imageLists.mobile.left.map((imgData, idx) => {
+                            {imageLists.mobile.left.map((caseData, idx) => {
                                 return (
                                     <div
                                         key={'left' + idx}
                                         className={styles.left_item_container}
                                     >
-                                        <CaseCards
-                                            imageData={imgData}
-                                            isBlurred={
-                                                selectedFilter
-                                                    ? !imgData.filterBy.includes(
-                                                          selectedFilter
-                                                      )
-                                                    : false
-                                            }
-                                        />
+                                        <Link
+                                            href={`/cases/${caseData.caseId}`}
+                                        >
+                                            <CaseCards
+                                                caseData={caseData}
+                                                isBlurred={
+                                                    selectedFilter
+                                                        ? !caseData.filterBy.includes(
+                                                              selectedFilter
+                                                          )
+                                                        : false
+                                                }
+                                            />
+                                        </Link>
                                     </div>
                                 );
                             })}
@@ -191,22 +196,26 @@ const Cases = () => {
                                 }px`,
                             }}
                         >
-                            {imageLists.mobile.right.map((imgData, idx) => {
+                            {imageLists.mobile.right.map((caseData, idx) => {
                                 return (
                                     <div
                                         key={'right' + idx}
                                         className={styles.right_item_container}
                                     >
-                                        <CaseCards
-                                            imageData={imgData}
-                                            isBlurred={
-                                                selectedFilter
-                                                    ? !imgData.filterBy.includes(
-                                                          selectedFilter
-                                                      )
-                                                    : false
-                                            }
-                                        />
+                                        <Link
+                                            href={`/cases/${caseData.caseId}`}
+                                        >
+                                            <CaseCards
+                                                caseData={caseData}
+                                                isBlurred={
+                                                    selectedFilter
+                                                        ? !caseData.filterBy.includes(
+                                                              selectedFilter
+                                                          )
+                                                        : false
+                                                }
+                                            />
+                                        </Link>
                                     </div>
                                 );
                             })}
@@ -227,25 +236,33 @@ const Cases = () => {
                                 isFilterOpen && styles.move_left_col,
                             ].join(' ')}
                         >
-                            {imageLists.desktop.leftLeft.map((imgData, idx) => {
-                                return (
-                                    <div
-                                        key={'leftLeft' + idx}
-                                        className={styles.left_item_container}
-                                    >
-                                        <CaseCards
-                                            imageData={imgData}
-                                            isBlurred={
-                                                selectedFilter
-                                                    ? !imgData.filterBy.includes(
-                                                          selectedFilter
-                                                      )
-                                                    : false
+                            {imageLists.desktop.leftLeft.map(
+                                (caseData, idx) => {
+                                    return (
+                                        <div
+                                            key={'leftLeft' + idx}
+                                            className={
+                                                styles.left_item_container
                                             }
-                                        />
-                                    </div>
-                                );
-                            })}
+                                        >
+                                            <Link
+                                                href={`/cases/${caseData.caseId}`}
+                                            >
+                                                <CaseCards
+                                                    caseData={caseData}
+                                                    isBlurred={
+                                                        selectedFilter
+                                                            ? !caseData.filterBy.includes(
+                                                                  selectedFilter
+                                                              )
+                                                            : false
+                                                    }
+                                                />
+                                            </Link>
+                                        </div>
+                                    );
+                                }
+                            )}
                         </div>
                     </motion.div>
                     <motion.div
@@ -265,22 +282,26 @@ const Cases = () => {
                                 }px`,
                             }}
                         >
-                            {imageLists.desktop.left.map((imgData, idx) => {
+                            {imageLists.desktop.left.map((caseData, idx) => {
                                 return (
                                     <div
                                         key={'left' + idx}
                                         className={styles.right_item_container}
                                     >
-                                        <CaseCards
-                                            imageData={imgData}
-                                            isBlurred={
-                                                selectedFilter
-                                                    ? !imgData.filterBy.includes(
-                                                          selectedFilter
-                                                      )
-                                                    : false
-                                            }
-                                        />
+                                        <Link
+                                            href={`/cases/${caseData.caseId}`}
+                                        >
+                                            <CaseCards
+                                                caseData={caseData}
+                                                isBlurred={
+                                                    selectedFilter
+                                                        ? !caseData.filterBy.includes(
+                                                              selectedFilter
+                                                          )
+                                                        : false
+                                                }
+                                            />
+                                        </Link>
                                     </div>
                                 );
                             })}
@@ -297,22 +318,26 @@ const Cases = () => {
                                 isFilterOpen && styles.move_right_col,
                             ].join(' ')}
                         >
-                            {imageLists.desktop.right.map((imgData, idx) => {
+                            {imageLists.desktop.right.map((caseData, idx) => {
                                 return (
                                     <div
                                         key={'right' + idx}
                                         className={styles.left_item_container}
                                     >
-                                        <CaseCards
-                                            imageData={imgData}
-                                            isBlurred={
-                                                selectedFilter
-                                                    ? !imgData.filterBy.includes(
-                                                          selectedFilter
-                                                      )
-                                                    : false
-                                            }
-                                        />
+                                        <Link
+                                            href={`/cases/${caseData.caseId}`}
+                                        >
+                                            <CaseCards
+                                                caseData={caseData}
+                                                isBlurred={
+                                                    selectedFilter
+                                                        ? !caseData.filterBy.includes(
+                                                              selectedFilter
+                                                          )
+                                                        : false
+                                                }
+                                            />
+                                        </Link>
                                     </div>
                                 );
                             })}
@@ -335,7 +360,7 @@ const Cases = () => {
                             }}
                         >
                             {imageLists.desktop.rightRight.map(
-                                (imgData, idx) => {
+                                (caseData, idx) => {
                                     return (
                                         <div
                                             key={'rightRight' + idx}
@@ -343,16 +368,20 @@ const Cases = () => {
                                                 styles.right_item_container
                                             }
                                         >
-                                            <CaseCards
-                                                imageData={imgData}
-                                                isBlurred={
-                                                    selectedFilter
-                                                        ? !imgData.filterBy.includes(
-                                                              selectedFilter
-                                                          )
-                                                        : false
-                                                }
-                                            />
+                                            <Link
+                                                href={`/cases/${caseData.caseId}`}
+                                            >
+                                                <CaseCards
+                                                    caseData={caseData}
+                                                    isBlurred={
+                                                        selectedFilter
+                                                            ? !caseData.filterBy.includes(
+                                                                  selectedFilter
+                                                              )
+                                                            : false
+                                                    }
+                                                />
+                                            </Link>
                                         </div>
                                     );
                                 }

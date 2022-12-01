@@ -6,6 +6,45 @@ export const casesData = [
         tag: 'Most Viewed',
         filterBy: ['Branding', 'E-commerce', 'Most viewed', 'Fashion'],
         caseId: 'suitsupply',
+        page1: {
+            heading1: 'creative partnership',
+            desc1: `Suitsupply was founded in 1999 as one of the first omnichannel brands in the world. Since 2018, we operate as their global creative lead. Through an ongoing partnership with their internal teams, we ensure all touchpoints are constantly aligned with their brand promise: "Don't just fit in, find your own perfect fit".`,
+            desc2: `Suitsupply provides a radical personal customer approach and brand experience through its 150 stores worldwide and digital services. It's our job to bridge the gap between their on and offline touchpoints.`,
+            redirectUrl: 'https://suitsupply.com/en-ca/',
+            heading2: 'branding',
+            heading2List: [
+                'Digital rebranding',
+                'Photography direction',
+                'Packaging',
+                'Social media',
+                'Omnichannel assets',
+            ],
+            heading3: 'e-commerce',
+            heading3List: [
+                'UX Design',
+                'UI Design',
+                'Design system',
+                'New ways to shop',
+                'Front-end development',
+            ],
+        },
+        page2: {
+            imageUrl: '/images/suitsupply/page2.webp',
+            alt: 'suitsupply2',
+        },
+        page3: {
+            imageUrl: '/images/suitsupply/page3.webp',
+            alt: 'suitsupply3',
+            heading: 'digital rebranding',
+            desc: 'We established a global digital rebranding that turned their .com into a digital flagship store.',
+        },
+        page4: {
+            heading: 'visually driven e-commerce',
+            desc: `We set up a digital design language that's rooted in our 'Minimum UI, maximum content' design principle. Turning Suitsupply.com into a visually driven e-commerce platform.`,
+        },
+        page5: {
+            videoUrl: '/images/suitsupply/suitsupply-look-builder.mp4',
+        },
     },
     {
         url: '/images/cases/cases10.webp',

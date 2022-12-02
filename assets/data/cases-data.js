@@ -6,7 +6,7 @@ export const casesData = [
         tag: 'Most Viewed',
         filterBy: ['Branding', 'E-commerce', 'Most viewed', 'Fashion'],
         caseId: 'suitsupply',
-        page1: {
+        infoPage: {
             heading1: 'creative partnership',
             desc1: `Suitsupply was founded in 1999 as one of the first omnichannel brands in the world. Since 2018, we operate as their global creative lead. Through an ongoing partnership with their internal teams, we ensure all touchpoints are constantly aligned with their brand promise: "Don't just fit in, find your own perfect fit".`,
             desc2: `Suitsupply provides a radical personal customer approach and brand experience through its 150 stores worldwide and digital services. It's our job to bridge the gap between their on and offline touchpoints.`,
@@ -28,44 +28,44 @@ export const casesData = [
                 'Front-end development',
             ],
         },
+        page1: {
+            imageUrl: '/images/suitsupply/page1.webp',
+            alt: 'suitsupply1',
+        },
         page2: {
             imageUrl: '/images/suitsupply/page2.webp',
             alt: 'suitsupply2',
-        },
-        page3: {
-            imageUrl: '/images/suitsupply/page3.webp',
-            alt: 'suitsupply3',
             heading: 'digital rebranding',
             desc: 'We established a global digital rebranding that turned their .com into a digital flagship store.',
         },
-        page4: {
+        page3: {
             heading: 'visually driven e-commerce',
             desc: `We set up a digital design language that's rooted in our 'Minimum UI, maximum content' design principle. Turning Suitsupply.com into a visually driven e-commerce platform.`,
         },
-        page5: {
+        page4: {
             videoUrl: '/images/suitsupply/suitsupply-look-builder.mp4',
         },
-        page6: {
-            imageUrl: '/images/suitsupply/page6.webp',
-            alt: 'suitsupply6',
+        page5: {
+            imageUrl: '/images/suitsupply/page5.webp',
+            alt: 'suitsupply5',
             heading: 'look builder',
             desc: 'Together with Suitsupply, we created a highly intuitive digital tool that allows the users to easily generate numerous looks & styles in no time.',
         },
-        page7: {
+        page6: {
             videoUrl: '/images/suitsupply/suitsupply_mobile_shop-the-look.mov',
             heading: 'integrated shopping experience',
             desc: 'We ensure that every Suitsupply users have a seamless, integrated shopping experience throughout all touch points.',
         },
-        page8: {
-            imageUrl: '/images/suitsupply/page8.webp',
-            alt: 'suitsupply8',
+        page7: {
+            imageUrl: '/images/suitsupply/page7.webp',
+            alt: 'suitsupply7',
         },
-        page9: {
+        page8: {
             videoUrl: '/images/suitsupply/suitsupply_size-passport.mp4',
             heading: 'size passport',
             desc: `A personalized tool for pre-setting and saving the users' garment measurements with just a few clicks.`,
         },
-        page10: {
+        page9: {
             videoUrl: '/images/suitsupply/suitsupply_employee-profile.mp4',
         },
     },

@@ -45,6 +45,29 @@ export const casesData = [
         page5: {
             videoUrl: '/images/suitsupply/suitsupply-look-builder.mp4',
         },
+        page6: {
+            imageUrl: '/images/suitsupply/page6.webp',
+            alt: 'suitsupply6',
+            heading: 'look builder',
+            desc: 'Together with Suitsupply, we created a highly intuitive digital tool that allows the users to easily generate numerous looks & styles in no time.',
+        },
+        page7: {
+            videoUrl: '/images/suitsupply/suitsupply_mobile_shop-the-look.mov',
+            heading: 'integrated shopping experience',
+            desc: 'We ensure that every Suitsupply users have a seamless, integrated shopping experience throughout all touch points.',
+        },
+        page8: {
+            imageUrl: '/images/suitsupply/page8.webp',
+            alt: 'suitsupply8',
+        },
+        page9: {
+            videoUrl: '/images/suitsupply/suitsupply_size-passport.mp4',
+            heading: 'size passport',
+            desc: `A personalized tool for pre-setting and saving the users' garment measurements with just a few clicks.`,
+        },
+        page10: {
+            videoUrl: '/images/suitsupply/suitsupply_employee-profile.mp4',
+        },
     },
     {
         url: '/images/cases/cases10.webp',

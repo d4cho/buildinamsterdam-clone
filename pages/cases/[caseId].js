@@ -44,7 +44,21 @@ const CaseDetails = ({ caseId, caseData }) => {
 
     console.log(caseData);
 
-    const { url, title, desc, page1, page2, page3, page4, page5 } = caseData;
+    const {
+        url,
+        title,
+        desc,
+        page1,
+        page2,
+        page3,
+        page4,
+        page5,
+        page6,
+        page7,
+        page8,
+        page9,
+        page10,
+    } = caseData;
 
     return (
         <div className={styles.container}>
@@ -147,13 +161,88 @@ const CaseDetails = ({ caseId, caseData }) => {
                             loop
                             muted
                             playsInline
-                            src={page5.videoUrl}
                         >
                             <source src={page5.videoUrl} type='video/mp4' />
                         </video>
                     </div>
                 </div>
 
+                {/* page 6 */}
+                <div className={styles.page6}>
+                    <img
+                        className={styles.page6_image}
+                        src={page6.imageUrl}
+                        alt={page6.alt}
+                    />
+                    <div className={styles.page6_text_wrapper}>
+                        <h2>{page6.heading}</h2>
+                        <p>{page6.desc}</p>
+                    </div>
+                </div>
+
+                {/* page 7 */}
+                <div className={styles.page7}>
+                    <div className={styles.page7_video_wrapper}>
+                        <video
+                            className={styles.page7_video}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                        >
+                            <source src={page7.videoUrl} type='video/mp4' />
+                        </video>
+                    </div>
+                    <div className={styles.page7_text_wrapper}>
+                        <h2>{page7.heading}</h2>
+                        <p>{page7.desc}</p>
+                    </div>
+                </div>
+
+                {/* page 8 */}
+                <div className={styles.page8}>
+                    <img
+                        className={styles.page8_image}
+                        src={page8.imageUrl}
+                        alt={page8.alt}
+                    />
+                </div>
+
+                {/* page 9 */}
+                <div className={styles.page9}>
+                    <div className={styles.page9_video_wrapper}>
+                        <video
+                            className={styles.page9_video}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                        >
+                            <source src={page9.videoUrl} type='video/mp4' />
+                        </video>
+                    </div>
+                    <div className={styles.page9_text_wrapper}>
+                        <h2>{page9.heading}</h2>
+                        <p>{page9.desc}</p>
+                    </div>
+                </div>
+
+                {/* page 10 */}
+                <div className={styles.page10}>
+                    <div className={styles.page10_video_wrapper}>
+                        <video
+                            className={styles.page10_video}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                        >
+                            <source src={page10.videoUrl} type='video/mp4' />
+                        </video>
+                    </div>
+                </div>
+
+                {/* last page */}
                 <div className={styles.page1}>
                     <h1>{caseId + ' testtest'}</h1>
                 </div>

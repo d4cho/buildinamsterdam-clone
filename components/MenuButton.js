@@ -10,6 +10,8 @@ const MenuButton = () => {
         isFilterOpen,
         setIsFilterOpen,
         selectedFilter,
+        isCaseDetailPage,
+        scrollDir,
     } = useAppContext();
     const [touched, setTouched] = useState(false);
 
@@ -29,7 +31,7 @@ const MenuButton = () => {
             return text;
         }
 
-        if (isMenuOpen) {
+        if (isMenuOpen || isCaseDetailPage) {
             return 'Close';
         }
 
@@ -51,7 +53,10 @@ const MenuButton = () => {
 
     return (
         <div
-            className={styles.container}
+            className={[
+                styles.container,
+                scrollDir === 'down' && styles.move_down,
+            ].join(' ')}
             onMouseEnter={() => setTouched(true)}
             onMouseLeave={handleMouseLeave}
         >
@@ -76,7 +81,7 @@ const MenuButton = () => {
                     className={[
                         styles.curve,
                         // mobile
-                        isMenuOpen || isFilterOpen
+                        isMenuOpen || isFilterOpen || isCaseDetailPage
                             ? styles.menu_open
                             : styles.curve_text_animation,
                         // desktop

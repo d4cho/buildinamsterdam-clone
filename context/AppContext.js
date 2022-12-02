@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const AppContext = createContext();
 
@@ -43,6 +44,22 @@ export const AppContextProvider = ({ children }) => {
 
     const [selectedFilter, setSelectedFilter] = useState('');
 
+    const router = useRouter();
+    const [isCaseDetailPage, setIsCaseDetailPage] = useState(false);
+    const [caseId, setCaseId] = useState('');
+    useEffect(() => {
+        const caseId = router.query.caseId;
+        if (caseId) {
+            setIsCaseDetailPage(true);
+            setCaseId(caseId);
+        } else {
+            setIsCaseDetailPage(false);
+            setCaseId('');
+        }
+    }, [router.query.caseId]);
+
+    const [scrollDir, setScrollDir] = useState('');
+
     return (
         <AppContext.Provider
             value={{
@@ -53,6 +70,10 @@ export const AppContextProvider = ({ children }) => {
                 setIsFilterOpen,
                 selectedFilter,
                 setSelectedFilter,
+                isCaseDetailPage,
+                caseId,
+                scrollDir,
+                setScrollDir,
             }}
         >
             {children}

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../../styles/CaseDetails.module.css';
 import { casesData } from '../../assets/data/cases-data';
 import Header from '../../components/Header';
-import Link from 'next/link';
+import { useAppContext } from '../../context/AppContext';
 
 // Generates `/cases/1`, `/cases/2`, ...
 export const getStaticPaths = async () => {
@@ -32,6 +32,29 @@ export const getStaticProps = async (context) => {
 };
 
 const CaseDetails = ({ caseId, caseData }) => {
+    const { scrollDir, setScrollDir } = useAppContext();
+
+    const [scrollPosition, setScrollPosition] = useState(0);
+
+    useEffect(() => {
+        const scrollEvent = () => {
+            const main = document.querySelector('#main');
+            const currentScrollPosition = main.scrollTop;
+
+            if (currentScrollPosition > scrollPosition) {
+                setScrollDir('down');
+            } else {
+                setScrollDir('up');
+            }
+
+            setScrollPosition(currentScrollPosition);
+        };
+
+        main.addEventListener('scroll', scrollEvent);
+
+        return () => main.removeEventListener('scroll', scrollEvent);
+    }, [scrollPosition]);
+
     const getLogoColor = (caseId) => {
         switch (caseId) {
             case 'suitsupply':
@@ -41,8 +64,6 @@ const CaseDetails = ({ caseId, caseData }) => {
                 return '#000';
         }
     };
-
-    console.log(caseData);
 
     const {
         url,
@@ -72,7 +93,7 @@ const CaseDetails = ({ caseId, caseData }) => {
 
     return (
         <div className={styles.container}>
-            <main className={styles.main}>
+            <main className={styles.main} id='main'>
                 {/* main page */}
                 <div className={styles.main_page}>
                     <Header logoColor={getLogoColor(caseId)} delay={0} />

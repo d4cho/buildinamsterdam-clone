@@ -1,5 +1,11 @@
 .container {
     cursor: pointer;
+    border: 1px solid red;
+}
+
+.move_down {
+    opacity: 0;
+    transition: opacity 0.4s linear;
 }
 
 .wrapper {

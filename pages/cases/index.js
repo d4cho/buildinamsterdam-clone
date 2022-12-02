@@ -116,6 +116,11 @@ const Cases = () => {
         return () => window.removeEventListener('scroll', onScroll);
     }, [imageLists, view]);
 
+    const handleCardClick = () => {
+        // make sure filter is closed in context
+        setIsFilterOpen(false);
+    };
+
     return (
         <div className={styles.container}>
             {/* filter starts */}
@@ -158,6 +163,7 @@ const Cases = () => {
                                     <div
                                         key={'left' + idx}
                                         className={styles.left_item_container}
+                                        onClick={handleCardClick}
                                     >
                                         <Link
                                             href={`/cases/${caseData.caseId}`}
@@ -201,6 +207,7 @@ const Cases = () => {
                                     <div
                                         key={'right' + idx}
                                         className={styles.right_item_container}
+                                        onClick={handleCardClick}
                                     >
                                         <Link
                                             href={`/cases/${caseData.caseId}`}
@@ -244,6 +251,7 @@ const Cases = () => {
                                             className={
                                                 styles.left_item_container
                                             }
+                                            onClick={handleCardClick}
                                         >
                                             <Link
                                                 href={`/cases/${caseData.caseId}`}
@@ -287,6 +295,7 @@ const Cases = () => {
                                     <div
                                         key={'left' + idx}
                                         className={styles.right_item_container}
+                                        onClick={handleCardClick}
                                     >
                                         <Link
                                             href={`/cases/${caseData.caseId}`}
@@ -323,6 +332,7 @@ const Cases = () => {
                                     <div
                                         key={'right' + idx}
                                         className={styles.left_item_container}
+                                        onClick={handleCardClick}
                                     >
                                         <Link
                                             href={`/cases/${caseData.caseId}`}
@@ -367,6 +377,7 @@ const Cases = () => {
                                             className={
                                                 styles.right_item_container
                                             }
+                                            onClick={handleCardClick}
                                         >
                                             <Link
                                                 href={`/cases/${caseData.caseId}`}

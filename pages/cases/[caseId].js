@@ -58,6 +58,16 @@ const CaseDetails = ({ caseId, caseData }) => {
         page7,
         page8,
         page9,
+        page10,
+        page11,
+        page12,
+        page13,
+        page14,
+        page15,
+        page16,
+        page17,
+        page18,
+        page19,
     } = caseData;
 
     return (
@@ -229,8 +239,10 @@ const CaseDetails = ({ caseId, caseData }) => {
                         </video>
                     </div>
                     <div
-                        className={styles.abs_pos_text_wrapper}
-                        style={{ left: '5.263vw' }}
+                        className={[
+                            styles.abs_pos_text_wrapper,
+                            styles.abs_text_left,
+                        ].join(' ')}
                     >
                         <h2>{page8.heading}</h2>
                         <p>{page8.desc}</p>
@@ -254,8 +266,156 @@ const CaseDetails = ({ caseId, caseData }) => {
                     </div>
                 </div>
 
+                {/* page 10 */}
+                <div className={styles.scroll_snap_wrapper}>
+                    <img
+                        className={styles.fullscreen_image}
+                        src={page10.imageUrl}
+                        alt={page10.alt}
+                    />
+                    <div className={styles.abs_pos_text_wrapper}>
+                        <h2>{page10.heading}</h2>
+                        <p>{page10.desc}</p>
+                    </div>
+                </div>
+
+                {/* page 11 */}
+                <div className={styles.scroll_snap_wrapper}>
+                    <img
+                        className={styles.fullscreen_image}
+                        src={page11.imageUrl}
+                        alt={page11.alt}
+                    />
+                    <div
+                        className={[
+                            styles.abs_pos_text_wrapper,
+                            styles.abs_text_left,
+                        ].join(' ')}
+                    >
+                        <h2>{page11.heading}</h2>
+                        <p>{page11.desc}</p>
+                    </div>
+                </div>
+
+                {/* page 12 */}
+                <div className={styles.only_centered_text}>
+                    <div className={styles.only_centered_text_text_wrapper}>
+                        <h2>{page12.heading}</h2>
+                        <p>{page12.desc}</p>
+                    </div>
+                </div>
+
+                {/* page 13 */}
+                <div className={styles.video_fullscreen}>
+                    <div className={styles.video_fullscreen_video_wrapper}>
+                        <video
+                            className={styles.video_fullscreen_video}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                        >
+                            <source src={page13.videoUrl} type='video/mp4' />
+                        </video>
+                    </div>
+                    <div className={styles.abs_pos_text_wrapper}>
+                        <h2>{page13.heading}</h2>
+                        <p>{page13.desc}</p>
+                    </div>
+                </div>
+
+                {/* page 14 */}
+                <div className={styles.video_fullscreen}>
+                    <div className={styles.video_fullscreen_video_wrapper}>
+                        <video
+                            className={styles.video_fullscreen_video}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                        >
+                            <source src={page14.videoUrl} type='video/mp4' />
+                        </video>
+                    </div>
+                    <div className={styles.abs_pos_text_wrapper}>
+                        <h2>{page14.heading}</h2>
+                        <p>{page14.desc}</p>
+                    </div>
+                </div>
+
+                {/* page 15 */}
+                <div className={styles.scroll_snap_wrapper}>
+                    <img
+                        className={styles.fullscreen_image}
+                        src={page15.imageUrl}
+                        alt={page15.alt}
+                    />
+                </div>
+
+                {/* page 16 */}
+                <div
+                    className={styles.video_portrait_centered}
+                    style={{ backgroundColor: 'rgb(45, 46, 44)' }}
+                >
+                    <div
+                        className={styles.video_portrait_centered_video_wrapper}
+                    >
+                        <video
+                            className={styles.video_portrait_centered_video}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                        >
+                            <source src={page16.videoUrl} type='video/mp4' />
+                        </video>
+                    </div>
+                    <div
+                        className={[
+                            styles.abs_pos_text_wrapper,
+                            styles.abs_text_left,
+                        ].join(' ')}
+                    >
+                        <h2>{page16.heading}</h2>
+                        <p>{page16.desc}</p>
+                    </div>
+                </div>
+
+                {/* page 17 */}
+                <div className={styles.only_centered_text}>
+                    <div className={styles.only_centered_text_text_wrapper}>
+                        <h2>{page17.heading}</h2>
+                        <p>{page17.desc}</p>
+                    </div>
+                </div>
+
+                {/* page 18 */}
+                <div className={styles.scroll_snap_wrapper}>
+                    <img
+                        className={styles.fullscreen_image}
+                        src={page18.imageUrl}
+                        style={{ objectPosition: '70% 44%' }}
+                        alt={page18.alt}
+                    />
+                </div>
+
+                {/* page 19 */}
+                <div className={styles.video_fullscreen}>
+                    <div className={styles.video_fullscreen_video_wrapper}>
+                        <video
+                            className={styles.video_fullscreen_video}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                        >
+                            <source src={page19.videoUrl} type='video/mp4' />
+                        </video>
+                    </div>
+                </div>
+
                 {/* last page */}
-                <div className={styles.test}>
+                <div className={styles.scroll_snap_wrapper}>
                     <h1>{caseId + ' testtest'}</h1>
                 </div>
             </main>

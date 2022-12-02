@@ -10,12 +10,6 @@
     scroll-snap-type: y mandatory;
 }
 
-.test {
-    position: relative;
-    height: 100vh;
-    scroll-snap-align: start end;
-}
-
 /* main_page */
 .main_page {
     position: relative;
@@ -154,6 +148,9 @@
     line-height: 1.2;
     letter-spacing: -0.01em;
 }
+.abs_text_left {
+    left: 5.263vw;
+}
 
 /* only_centered_text */
 .only_centered_text {
@@ -213,7 +210,7 @@
 /* video_fullscreen */
 .video_fullscreen {
     position: relative;
-    min-height: 100vh;
+    height: 100vh;
     overflow: hidden;
     background-color: rgb(255, 255, 255);
     scroll-snap-align: start end;

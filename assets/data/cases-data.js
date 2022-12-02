@@ -68,6 +68,54 @@ export const casesData = [
         page9: {
             videoUrl: '/images/suitsupply/suitsupply_employee-profile.mp4',
         },
+        page10: {
+            imageUrl: '/images/suitsupply/page10.webp',
+            alt: 'suitsupply10',
+            heading: 'radical personal booking tool',
+            desc: 'We developed a fast & effective tool allowing visitors to plan a digital or in-store appointment with their personal stylists.',
+        },
+        page11: {
+            imageUrl: '/images/suitsupply/page11.webp',
+            alt: 'suitsupply1',
+            heading: 'the journals',
+            desc: 'We created editorials in the shape of digital magazines that include the latest & greatest in products, style tips, inside looks & all things Suitsupply.',
+        },
+        page12: {
+            heading: 'content direction',
+            desc: `We established new content direction for Suitsupply to elevate their products, looks & style, and to bring about an emotional touch onto their content.`,
+        },
+        page13: {
+            videoUrl:
+                '/images/suitsupply/suitsupply_mobile_journals_art-direction.mov',
+            heading: 'editorial content',
+            desc: 'We enrich Suitsupply editorial content by connecting their makers and suppliers with various photographers.',
+        },
+        page14: {
+            videoUrl: '/images/suitsupply/suitsupply_mobile_art-direction.mov',
+            heading: 'photography direction',
+            desc: 'We set up a new photography direction for Suitsupply that not only elevates their products, but also adds an emotional layer by going more up close and personal, bringing their fabrics and products to life.',
+        },
+        page15: {
+            imageUrl: '/images/suitsupply/page15.webp',
+            alt: 'suitsupply15',
+        },
+        page16: {
+            videoUrl: '/images/suitsupply/suitsupply-instagram-story.mp4',
+            heading: 'socials',
+            desc: `On Suitsupply's Instagram, we consistently hold on to its signature design language, allowing the brand to successfully integrate their .com & social shopping experience.`,
+        },
+        page17: {
+            heading: 'design system',
+            desc: `We are working side by side with Suitsupply’s development team to achieve a comprehensive design system, in order to enhance the design creation and development time.`,
+        },
+        page18: {
+            imageUrl: '/images/suitsupply/page18.webp',
+            alt: 'suitsupply18',
+        },
+        page19: {
+            videoUrl:
+                '/images/suitsupply/suitsupply-design-system-creation.mp4',
+        },
     },
     {
         url: '/images/cases/cases10.webp',

@@ -114,12 +114,15 @@
     letter-spacing: -0.01em;
 }
 
-/* only_fullscreen_image_page */
-.only_fullscreen_image_page {
+/* scroll_snap_wrapper */
+.scroll_snap_wrapper {
+    position: relative;
     height: 100vh;
     scroll-snap-align: start end;
 }
-.only_fullscreen_image_page_image {
+
+/* fullscreen_image */
+.fullscreen_image {
     width: 100%;
     height: 100%;
     min-width: 100%;
@@ -129,38 +132,24 @@
     object-fit: cover;
 }
 
-/* fullscreen_image_with_bot_right_text */
-.fullscreen_image_with_bot_right_text {
-    position: relative;
-    height: 100vh;
-    scroll-snap-align: start end;
-}
-.fullscreen_image_with_bot_right_text_image {
-    width: 100%;
-    height: 100%;
-    min-width: 100%;
-    min-height: 100%;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-}
-.fullscreen_image_with_bot_right_text_text_wrapper {
+/* abs_pos_text_wrapper */
+.abs_pos_text_wrapper {
     position: absolute;
     bottom: 2.125rem;
+    right: 5.263vw;
     width: 100%;
     max-width: 13rem;
-    right: 5.263vw;
     mix-blend-mode: exclusion;
     color: #fff;
 }
-.fullscreen_image_with_bot_right_text_text_wrapper > h2 {
+.abs_pos_text_wrapper > h2 {
     font-size: 10px;
     line-height: 1.2;
     text-transform: uppercase;
     font-weight: bold;
     margin-bottom: 0.435rem;
 }
-.fullscreen_image_with_bot_right_text_text_wrapper > p {
+.abs_pos_text_wrapper > p {
     font-size: 14px;
     line-height: 1.2;
     letter-spacing: -0.01em;
@@ -197,8 +186,8 @@
     letter-spacing: -0.01em;
 }
 
-/* only_centered_portrait_video */
-.only_centered_portrait_video {
+/* video_portrait_centered */
+.video_portrait_centered {
     display: grid;
     position: relative;
     min-height: 100vh;
@@ -207,101 +196,35 @@
     background-color: rgb(255, 255, 255);
     scroll-snap-align: start end;
 }
-.only_centered_portrait_video_video_wrapper {
+.video_portrait_centered_video_wrapper {
     max-width: 100%;
     width: 63.157vw;
     margin: auto;
     /* offset-x | offset-y | blur-radius | spread-radius | color */
     box-shadow: 0px 10px 15px 5px rgba(0, 0, 0, 0.2);
 }
-.only_centered_portrait_video_video {
+.video_portrait_centered_video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center center;
 }
 
-/* fullscreen_video_with_bot_right_text */
-.fullscreen_video_with_bot_right_text {
+/* video_fullscreen */
+.video_fullscreen {
     position: relative;
     min-height: 100vh;
     overflow: hidden;
     background-color: rgb(255, 255, 255);
     scroll-snap-align: start end;
 }
-.fullscreen_video_with_bot_right_text_video_wrapper {
+.video_fullscreen_video_wrapper {
     max-width: 100%;
     height: 100%;
 }
-.fullscreen_video_with_bot_right_text_video {
+.video_fullscreen_video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center center;
-}
-.fullscreen_video_with_bot_right_text_text_wrapper {
-    position: absolute;
-    bottom: 2.125rem;
-    width: 100%;
-    max-width: 13rem;
-    right: 5.263vw;
-    mix-blend-mode: exclusion;
-    color: #fff;
-}
-.fullscreen_video_with_bot_right_text_text_wrapper > h2 {
-    font-size: 10px;
-    line-height: 1.2;
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-bottom: 0.435rem;
-}
-.fullscreen_video_with_bot_right_text_text_wrapper > p {
-    font-size: 14px;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-}
-
-/* centered_video_with_bot_left_text */
-.centered_video_with_bot_left_text {
-    display: grid;
-    position: relative;
-    min-height: 100vh;
-    overflow: hidden;
-    padding: 5rem 0px 10rem;
-    background-color: rgb(45, 46, 44);
-    scroll-snap-align: start end;
-}
-.centered_video_with_bot_left_text_video_wrapper {
-    max-width: 100%;
-    width: 63.157vw;
-    margin: auto;
-    /* offset-x | offset-y | blur-radius | spread-radius | color */
-    box-shadow: 0px 10px 15px 5px rgba(0, 0, 0, 0.2);
-}
-.centered_video_with_bot_left_text_video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-}
-.centered_video_with_bot_left_text_text_wrapper {
-    position: absolute;
-    bottom: 2.125rem;
-    width: 100%;
-    max-width: 13rem;
-    left: 5.263vw;
-    mix-blend-mode: exclusion;
-    color: #fff;
-}
-.centered_video_with_bot_left_text_text_wrapper > h2 {
-    font-size: 10px;
-    line-height: 1.2;
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-bottom: 0.435rem;
-}
-.centered_video_with_bot_left_text_text_wrapper > p {
-    font-size: 14px;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
 }

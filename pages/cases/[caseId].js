@@ -123,28 +123,22 @@ const CaseDetails = ({ caseId, caseData }) => {
                 </div>
 
                 {/* page 1 */}
-                <div className={styles.only_fullscreen_image_page}>
+                <div className={styles.scroll_snap_wrapper}>
                     <img
-                        className={styles.only_fullscreen_image_page_image}
+                        className={styles.fullscreen_image}
                         src={page1.imageUrl}
                         alt={page1.alt}
                     />
                 </div>
 
                 {/* page 2 */}
-                <div className={styles.fullscreen_image_with_bot_right_text}>
+                <div className={styles.scroll_snap_wrapper}>
                     <img
-                        className={
-                            styles.fullscreen_image_with_bot_right_text_image
-                        }
+                        className={styles.fullscreen_image}
                         src={page2.imageUrl}
                         alt={page2.alt}
                     />
-                    <div
-                        className={
-                            styles.fullscreen_image_with_bot_right_text_text_wrapper
-                        }
-                    >
+                    <div className={styles.abs_pos_text_wrapper}>
                         <h2>{page2.heading}</h2>
                         <p>{page2.desc}</p>
                     </div>
@@ -159,16 +153,12 @@ const CaseDetails = ({ caseId, caseData }) => {
                 </div>
 
                 {/* page 4 */}
-                <div className={styles.only_centered_portrait_video}>
+                <div className={styles.video_portrait_centered}>
                     <div
-                        className={
-                            styles.only_centered_portrait_video_video_wrapper
-                        }
+                        className={styles.video_portrait_centered_video_wrapper}
                     >
                         <video
-                            className={
-                                styles.only_centered_portrait_video_video
-                            }
+                            className={styles.video_portrait_centered_video}
                             autoPlay
                             loop
                             muted
@@ -180,35 +170,23 @@ const CaseDetails = ({ caseId, caseData }) => {
                 </div>
 
                 {/* page 5 */}
-                <div className={styles.fullscreen_image_with_bot_right_text}>
+                <div className={styles.scroll_snap_wrapper}>
                     <img
-                        className={
-                            styles.fullscreen_image_with_bot_right_text_image
-                        }
+                        className={styles.fullscreen_image}
                         src={page5.imageUrl}
                         alt={page5.alt}
                     />
-                    <div
-                        className={
-                            styles.fullscreen_image_with_bot_right_text_text_wrapper
-                        }
-                    >
+                    <div className={styles.abs_pos_text_wrapper}>
                         <h2>{page5.heading}</h2>
                         <p>{page5.desc}</p>
                     </div>
                 </div>
 
                 {/* page 6 */}
-                <div className={styles.fullscreen_video_with_bot_right_text}>
-                    <div
-                        className={
-                            styles.fullscreen_video_with_bot_right_text_video_wrapper
-                        }
-                    >
+                <div className={styles.video_fullscreen}>
+                    <div className={styles.video_fullscreen_video_wrapper}>
                         <video
-                            className={
-                                styles.fullscreen_video_with_bot_right_text_video
-                            }
+                            className={styles.video_fullscreen_video}
                             autoPlay
                             loop
                             muted
@@ -217,36 +195,31 @@ const CaseDetails = ({ caseId, caseData }) => {
                             <source src={page6.videoUrl} type='video/mp4' />
                         </video>
                     </div>
-                    <div
-                        className={
-                            styles.fullscreen_video_with_bot_right_text_text_wrapper
-                        }
-                    >
+                    <div className={styles.abs_pos_text_wrapper}>
                         <h2>{page6.heading}</h2>
                         <p>{page6.desc}</p>
                     </div>
                 </div>
 
                 {/* page 7 */}
-                <div className={styles.only_fullscreen_image_page}>
+                <div className={styles.scroll_snap_wrapper}>
                     <img
-                        className={styles.only_fullscreen_image_page_image}
+                        className={styles.fullscreen_image}
                         src={page7.imageUrl}
                         alt={page7.alt}
                     />
                 </div>
 
                 {/* page 8 */}
-                <div className={styles.centered_video_with_bot_left_text}>
+                <div
+                    className={styles.video_portrait_centered}
+                    style={{ backgroundColor: 'rgb(45, 46, 44)' }}
+                >
                     <div
-                        className={
-                            styles.centered_video_with_bot_left_text_video_wrapper
-                        }
+                        className={styles.video_portrait_centered_video_wrapper}
                     >
                         <video
-                            className={
-                                styles.centered_video_with_bot_left_text_video
-                            }
+                            className={styles.video_portrait_centered_video}
                             autoPlay
                             loop
                             muted
@@ -256,9 +229,8 @@ const CaseDetails = ({ caseId, caseData }) => {
                         </video>
                     </div>
                     <div
-                        className={
-                            styles.centered_video_with_bot_left_text_text_wrapper
-                        }
+                        className={styles.abs_pos_text_wrapper}
+                        style={{ left: '5.263vw' }}
                     >
                         <h2>{page8.heading}</h2>
                         <p>{page8.desc}</p>
@@ -266,16 +238,12 @@ const CaseDetails = ({ caseId, caseData }) => {
                 </div>
 
                 {/* page 9 */}
-                <div className={styles.only_centered_portrait_video}>
+                <div className={styles.video_portrait_centered}>
                     <div
-                        className={
-                            styles.only_centered_portrait_video_video_wrapper
-                        }
+                        className={styles.video_portrait_centered_video_wrapper}
                     >
                         <video
-                            className={
-                                styles.only_centered_portrait_video_video
-                            }
+                            className={styles.video_portrait_centered_video}
                             autoPlay
                             loop
                             muted

@@ -6,6 +6,7 @@ export const casesData = [
         tag: 'Most Viewed',
         filterBy: ['Branding', 'E-commerce', 'Most viewed', 'Fashion'],
         caseId: 'suitsupply',
+        nextCaseId: 'studio-job',
         infoPage: {
             heading1: 'creative partnership',
             desc1: `Suitsupply was founded in 1999 as one of the first omnichannel brands in the world. Since 2018, we operate as their global creative lead. Through an ongoing partnership with their internal teams, we ensure all touchpoints are constantly aligned with their brand promise: "Don't just fit in, find your own perfect fit".`,
@@ -28,94 +29,129 @@ export const casesData = [
                 'Front-end development',
             ],
         },
-        page1: {
-            imageUrl: '/images/suitsupply/page1.webp',
-            alt: 'suitsupply1',
-        },
-        page2: {
-            imageUrl: '/images/suitsupply/page2.webp',
-            alt: 'suitsupply2',
-            heading: 'digital rebranding',
-            desc: 'We established a global digital rebranding that turned their .com into a digital flagship store.',
-        },
-        page3: {
-            heading: 'visually driven e-commerce',
-            desc: `We set up a digital design language that's rooted in our 'Minimum UI, maximum content' design principle. Turning Suitsupply.com into a visually driven e-commerce platform.`,
-        },
-        page4: {
-            videoUrl: '/images/suitsupply/suitsupply-look-builder.mp4',
-        },
-        page5: {
-            imageUrl: '/images/suitsupply/page5.webp',
-            alt: 'suitsupply5',
-            heading: 'look builder',
-            desc: 'Together with Suitsupply, we created a highly intuitive digital tool that allows the users to easily generate numerous looks & styles in no time.',
-        },
-        page6: {
-            videoUrl: '/images/suitsupply/suitsupply_mobile_shop-the-look.mov',
-            heading: 'integrated shopping experience',
-            desc: 'We ensure that every Suitsupply users have a seamless, integrated shopping experience throughout all touch points.',
-        },
-        page7: {
-            imageUrl: '/images/suitsupply/page7.webp',
-            alt: 'suitsupply7',
-        },
-        page8: {
-            videoUrl: '/images/suitsupply/suitsupply_size-passport.mp4',
-            heading: 'size passport',
-            desc: `A personalized tool for pre-setting and saving the users' garment measurements with just a few clicks.`,
-        },
-        page9: {
-            videoUrl: '/images/suitsupply/suitsupply_employee-profile.mp4',
-        },
-        page10: {
-            imageUrl: '/images/suitsupply/page10.webp',
-            alt: 'suitsupply10',
-            heading: 'radical personal booking tool',
-            desc: 'We developed a fast & effective tool allowing visitors to plan a digital or in-store appointment with their personal stylists.',
-        },
-        page11: {
-            imageUrl: '/images/suitsupply/page11.webp',
-            alt: 'suitsupply1',
-            heading: 'the journals',
-            desc: 'We created editorials in the shape of digital magazines that include the latest & greatest in products, style tips, inside looks & all things Suitsupply.',
-        },
-        page12: {
-            heading: 'content direction',
-            desc: `We established new content direction for Suitsupply to elevate their products, looks & style, and to bring about an emotional touch onto their content.`,
-        },
-        page13: {
-            videoUrl:
-                '/images/suitsupply/suitsupply_mobile_journals_art-direction.mov',
-            heading: 'editorial content',
-            desc: 'We enrich Suitsupply editorial content by connecting their makers and suppliers with various photographers.',
-        },
-        page14: {
-            videoUrl: '/images/suitsupply/suitsupply_mobile_art-direction.mov',
-            heading: 'photography direction',
-            desc: 'We set up a new photography direction for Suitsupply that not only elevates their products, but also adds an emotional layer by going more up close and personal, bringing their fabrics and products to life.',
-        },
-        page15: {
-            imageUrl: '/images/suitsupply/page15.webp',
-            alt: 'suitsupply15',
-        },
-        page16: {
-            videoUrl: '/images/suitsupply/suitsupply-instagram-story.mp4',
-            heading: 'socials',
-            desc: `On Suitsupply's Instagram, we consistently hold on to its signature design language, allowing the brand to successfully integrate their .com & social shopping experience.`,
-        },
-        page17: {
-            heading: 'design system',
-            desc: `We are working side by side with Suitsupply’s development team to achieve a comprehensive design system, in order to enhance the design creation and development time.`,
-        },
-        page18: {
-            imageUrl: '/images/suitsupply/page18.webp',
-            alt: 'suitsupply18',
-        },
-        page19: {
-            videoUrl:
-                '/images/suitsupply/suitsupply-design-system-creation.mp4',
-        },
+        pages: [
+            {
+                type: 'fullscreen-image',
+                imageUrl: '/images/suitsupply/page1.webp',
+                alt: 'suitsupply1',
+            },
+            {
+                type: 'fullscreen-image-with-text',
+                textPosition: 'right',
+                imageUrl: '/images/suitsupply/page2.webp',
+                alt: 'suitsupply2',
+                heading: 'digital rebranding',
+                desc: 'We established a global digital rebranding that turned their .com into a digital flagship store.',
+            },
+            {
+                type: 'centered-text',
+                heading: 'visually driven e-commerce',
+                desc: `We set up a digital design language that's rooted in our 'Minimum UI, maximum content' design principle. Turning Suitsupply.com into a visually driven e-commerce platform.`,
+            },
+            {
+                type: 'portrait-video',
+                videoUrl: '/images/suitsupply/suitsupply-look-builder.mp4',
+            },
+            {
+                type: 'fullscreen-image-with-text',
+                textPosition: 'right',
+                imageUrl: '/images/suitsupply/page5.webp',
+                alt: 'suitsupply5',
+                heading: 'look builder',
+                desc: 'Together with Suitsupply, we created a highly intuitive digital tool that allows the users to easily generate numerous looks & styles in no time.',
+            },
+            {
+                type: 'fullscreen-video-with-text',
+                textPosition: 'right',
+                videoUrl:
+                    '/images/suitsupply/suitsupply_mobile_shop-the-look.mov',
+                heading: 'integrated shopping experience',
+                desc: 'We ensure that every Suitsupply users have a seamless, integrated shopping experience throughout all touch points.',
+            },
+            {
+                type: 'fullscreen-image',
+                imageUrl: '/images/suitsupply/page7.webp',
+                alt: 'suitsupply7',
+            },
+            {
+                type: 'portrait-video-with-text',
+                backgroundColor: 'rgb(45, 46, 44)',
+                textPosition: 'right',
+                videoUrl: '/images/suitsupply/suitsupply_size-passport.mp4',
+                heading: 'size passport',
+                desc: `A personalized tool for pre-setting and saving the users' garment measurements with just a few clicks.`,
+            },
+            {
+                type: 'portrait-video',
+                videoUrl: '/images/suitsupply/suitsupply_employee-profile.mp4',
+            },
+            {
+                type: 'fullscreen-image-with-text',
+                textPosition: 'right',
+                imageUrl: '/images/suitsupply/page10.webp',
+                alt: 'suitsupply10',
+                heading: 'radical personal booking tool',
+                desc: 'We developed a fast & effective tool allowing visitors to plan a digital or in-store appointment with their personal stylists.',
+            },
+            {
+                type: 'fullscreen-image-with-text',
+                textPosition: 'left',
+                imageUrl: '/images/suitsupply/page11.webp',
+                alt: 'suitsupply1',
+                heading: 'the journals',
+                desc: 'We created editorials in the shape of digital magazines that include the latest & greatest in products, style tips, inside looks & all things Suitsupply.',
+            },
+            {
+                type: 'centered-text',
+                heading: 'content direction',
+                desc: `We established new content direction for Suitsupply to elevate their products, looks & style, and to bring about an emotional touch onto their content.`,
+            },
+            {
+                type: 'fullscreen-video-with-text',
+                textPosition: 'right',
+                videoUrl:
+                    '/images/suitsupply/suitsupply_mobile_journals_art-direction.mov',
+                heading: 'editorial content',
+                desc: 'We enrich Suitsupply editorial content by connecting their makers and suppliers with various photographers.',
+            },
+            {
+                type: 'fullscreen-video-with-text',
+                textPosition: 'right',
+                videoUrl:
+                    '/images/suitsupply/suitsupply_mobile_art-direction.mov',
+                heading: 'photography direction',
+                desc: 'We set up a new photography direction for Suitsupply that not only elevates their products, but also adds an emotional layer by going more up close and personal, bringing their fabrics and products to life.',
+            },
+            {
+                type: 'fullscreen-image',
+                imageUrl: '/images/suitsupply/page15.webp',
+                alt: 'suitsupply15',
+            },
+            {
+                type: 'portrait-video-with-text',
+                backgroundColor: 'rgb(45, 46, 44)',
+                textPosition: 'left',
+                videoUrl: '/images/suitsupply/suitsupply-instagram-story.mp4',
+                heading: 'socials',
+                desc: `On Suitsupply's Instagram, we consistently hold on to its signature design language, allowing the brand to successfully integrate their .com & social shopping experience.`,
+            },
+            {
+                type: 'centered-text',
+                heading: 'design system',
+                desc: `We are working side by side with Suitsupply’s development team to achieve a comprehensive design system, in order to enhance the design creation and development time.`,
+            },
+            {
+                type: 'fullscreen-image',
+                objectPosition: '70% 44%',
+                imageUrl: '/images/suitsupply/page18.webp',
+                alt: 'suitsupply18',
+            },
+            {
+                type: 'fullscreen-video',
+                videoUrl:
+                    '/images/suitsupply/suitsupply-design-system-creation.mp4',
+            },
+        ],
     },
     {
         url: '/images/cases/cases10.webp',
@@ -162,6 +198,152 @@ export const casesData = [
         desc: 'artpiece for an artist',
         filterBy: ['Branding', 'E-commerce', 'Sport', 'Travel'],
         caseId: 'studio-job',
+        nextCaseId: 'suitsupply',
+        infoPage: {
+            heading1: 'creative partnership',
+            desc1: `Suitsupply was founded in 1999 as one of the first omnichannel brands in the world. Since 2018, we operate as their global creative lead. Through an ongoing partnership with their internal teams, we ensure all touchpoints are constantly aligned with their brand promise: "Don't just fit in, find your own perfect fit".`,
+            desc2: `Suitsupply provides a radical personal customer approach and brand experience through its 150 stores worldwide and digital services. It's our job to bridge the gap between their on and offline touchpoints.`,
+            redirectUrl: 'https://suitsupply.com/en-ca/',
+            heading2: 'branding',
+            heading2List: [
+                'Digital rebranding',
+                'Photography direction',
+                'Packaging',
+                'Social media',
+                'Omnichannel assets',
+            ],
+            heading3: 'e-commerce',
+            heading3List: [
+                'UX Design',
+                'UI Design',
+                'Design system',
+                'New ways to shop',
+                'Front-end development',
+            ],
+        },
+        pages: [
+            {
+                type: 'fullscreen-image',
+                imageUrl: '/images/suitsupply/page1.webp',
+                alt: 'suitsupply1',
+            },
+            {
+                type: 'fullscreen-image-with-text',
+                textPosition: 'right',
+                imageUrl: '/images/suitsupply/page2.webp',
+                alt: 'suitsupply2',
+                heading: 'digital rebranding',
+                desc: 'We established a global digital rebranding that turned their .com into a digital flagship store.',
+            },
+            {
+                type: 'centered-text',
+                heading: 'visually driven e-commerce',
+                desc: `We set up a digital design language that's rooted in our 'Minimum UI, maximum content' design principle. Turning Suitsupply.com into a visually driven e-commerce platform.`,
+            },
+            {
+                type: 'portrait-video',
+                videoUrl: '/images/suitsupply/suitsupply-look-builder.mp4',
+            },
+            {
+                type: 'fullscreen-image-with-text',
+                textPosition: 'right',
+                imageUrl: '/images/suitsupply/page5.webp',
+                alt: 'suitsupply5',
+                heading: 'look builder',
+                desc: 'Together with Suitsupply, we created a highly intuitive digital tool that allows the users to easily generate numerous looks & styles in no time.',
+            },
+            {
+                type: 'fullscreen-video-with-text',
+                textPosition: 'right',
+                videoUrl:
+                    '/images/suitsupply/suitsupply_mobile_shop-the-look.mov',
+                heading: 'integrated shopping experience',
+                desc: 'We ensure that every Suitsupply users have a seamless, integrated shopping experience throughout all touch points.',
+            },
+            {
+                type: 'fullscreen-image',
+                imageUrl: '/images/suitsupply/page7.webp',
+                alt: 'suitsupply7',
+            },
+            {
+                type: 'portrait-video-with-text',
+                backgroundColor: 'rgb(45, 46, 44)',
+                textPosition: 'right',
+                videoUrl: '/images/suitsupply/suitsupply_size-passport.mp4',
+                heading: 'size passport',
+                desc: `A personalized tool for pre-setting and saving the users' garment measurements with just a few clicks.`,
+            },
+            {
+                type: 'portrait-video',
+                videoUrl: '/images/suitsupply/suitsupply_employee-profile.mp4',
+            },
+            {
+                type: 'fullscreen-image-with-text',
+                textPosition: 'right',
+                imageUrl: '/images/suitsupply/page10.webp',
+                alt: 'suitsupply10',
+                heading: 'radical personal booking tool',
+                desc: 'We developed a fast & effective tool allowing visitors to plan a digital or in-store appointment with their personal stylists.',
+            },
+            {
+                type: 'fullscreen-image-with-text',
+                textPosition: 'left',
+                imageUrl: '/images/suitsupply/page11.webp',
+                alt: 'suitsupply1',
+                heading: 'the journals',
+                desc: 'We created editorials in the shape of digital magazines that include the latest & greatest in products, style tips, inside looks & all things Suitsupply.',
+            },
+            {
+                type: 'centered-text',
+                heading: 'content direction',
+                desc: `We established new content direction for Suitsupply to elevate their products, looks & style, and to bring about an emotional touch onto their content.`,
+            },
+            {
+                type: 'fullscreen-video-with-text',
+                textPosition: 'right',
+                videoUrl:
+                    '/images/suitsupply/suitsupply_mobile_journals_art-direction.mov',
+                heading: 'editorial content',
+                desc: 'We enrich Suitsupply editorial content by connecting their makers and suppliers with various photographers.',
+            },
+            {
+                type: 'fullscreen-video-with-text',
+                textPosition: 'right',
+                videoUrl:
+                    '/images/suitsupply/suitsupply_mobile_art-direction.mov',
+                heading: 'photography direction',
+                desc: 'We set up a new photography direction for Suitsupply that not only elevates their products, but also adds an emotional layer by going more up close and personal, bringing their fabrics and products to life.',
+            },
+            {
+                type: 'fullscreen-image',
+                imageUrl: '/images/suitsupply/page15.webp',
+                alt: 'suitsupply15',
+            },
+            {
+                type: 'portrait-video-with-text',
+                backgroundColor: 'rgb(45, 46, 44)',
+                textPosition: 'left',
+                videoUrl: '/images/suitsupply/suitsupply-instagram-story.mp4',
+                heading: 'socials',
+                desc: `On Suitsupply's Instagram, we consistently hold on to its signature design language, allowing the brand to successfully integrate their .com & social shopping experience.`,
+            },
+            {
+                type: 'centered-text',
+                heading: 'design system',
+                desc: `We are working side by side with Suitsupply’s development team to achieve a comprehensive design system, in order to enhance the design creation and development time.`,
+            },
+            {
+                type: 'fullscreen-image',
+                objectPosition: '70% 44%',
+                imageUrl: '/images/suitsupply/page18.webp',
+                alt: 'suitsupply18',
+            },
+            {
+                type: 'fullscreen-video',
+                videoUrl:
+                    '/images/suitsupply/suitsupply-design-system-creation.mp4',
+            },
+        ],
     },
     {
         url: '/images/cases/cases3.webp',

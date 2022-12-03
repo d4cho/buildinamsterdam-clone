@@ -49,7 +49,7 @@ const MenuButton = () => {
         if (isFilterOpen) {
             setIsFilterOpen(false);
         } else if (isCaseDetailPage) {
-            router.back();
+            router.push('/cases');
         } else {
             setIsMenuOpen(!isMenuOpen);
         }

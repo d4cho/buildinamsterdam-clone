@@ -3,6 +3,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import styles from '../styles/CaseCardsLayout.module.css';
 import { getTotalScrollable } from '../utils/functions';
 import CaseCards from './CaseCards';
+import Link from 'next/link';
 
 const CaseCardsLayout = ({ leftColImages, rightColImages }) => {
     // const { isMobileView, isMenuOpen } = useAppContext();
@@ -65,7 +66,9 @@ const CaseCardsLayout = ({ leftColImages, rightColImages }) => {
                             key={'left' + idx}
                             className={styles.left_item_container}
                         >
-                            <CaseCards caseData={caseData} />
+                            <Link href={`/cases/${caseData.caseId}`}>
+                                <CaseCards caseData={caseData} />
+                            </Link>
                         </div>
                     );
                 })}
@@ -83,7 +86,9 @@ const CaseCardsLayout = ({ leftColImages, rightColImages }) => {
                             key={'right' + idx}
                             className={styles.right_item_container}
                         >
-                            <CaseCards caseData={caseData} />
+                            <Link href={`/cases/${caseData.caseId}`}>
+                                <CaseCards caseData={caseData} />
+                            </Link>
                         </div>
                     );
                 })}

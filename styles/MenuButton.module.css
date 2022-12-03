@@ -1,17 +1,24 @@
 .container {
-    cursor: pointer;
-    border: 1px solid red;
+    width: 130px;
+    height: 130px;
+    position: fixed;
+    left: 50%;
+    top: 92.5vh;
+    translate: -50% -50%;
+    z-index: 3;
+    transition: translate 0.4s linear;
 }
 
 .move_down {
-    opacity: 0;
-    transition: opacity 0.4s linear;
+    translate: -50% 130px;
+    transition: translate 0.4s linear;
 }
 
 .wrapper {
-    position: fixed;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
     left: 50%;
-    top: 90vh;
     translate: -50% -50%;
     width: 64px;
     height: 64px;
@@ -23,12 +30,12 @@
 }
 
 .curve {
-    font-size: 80px;
-    position: fixed;
+    position: absolute;
+    top: 50%;
     left: 50%;
-    top: 90vh;
-    z-index: 1;
     translate: -50% -50%;
+    font-size: 80px;
+    z-index: 1;
     width: 100px;
     height: 100px;
 }

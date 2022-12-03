@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import styles from '../styles/MenuButton.module.css';
 import { motion } from 'framer-motion';
 import { useAppContext } from '../context/AppContext';
+import { useRouter } from 'next/router';
 
 const MenuButton = () => {
+    const router = useRouter();
     const {
         isMenuOpen,
         setIsMenuOpen,
@@ -46,36 +48,34 @@ const MenuButton = () => {
     const handleButtonClick = () => {
         if (isFilterOpen) {
             setIsFilterOpen(false);
+        } else if (isCaseDetailPage) {
+            router.back();
         } else {
             setIsMenuOpen(!isMenuOpen);
         }
     };
 
     return (
-        <div
+        <motion.div
             className={[
                 styles.container,
                 scrollDir === 'down' && styles.move_down,
             ].join(' ')}
+            initial={{ y: 200, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.4, ease: 'easeIn', delay: 2.2 }}
             onMouseEnter={() => setTouched(true)}
             onMouseLeave={handleMouseLeave}
         >
             <motion.div
                 className={[styles.wrapper, getColorClass()].join(' ')}
-                initial={{ y: 200, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.4, ease: 'easeIn', delay: 2.2 }}
                 onClick={handleButtonClick}
             >
                 <nav>
                     <button className={styles.button}></button>
                 </nav>
             </motion.div>
-            <motion.div
-                initial={{ y: 200, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.4, ease: 'easeIn', delay: 2.2 }}
-            >
+            <motion.div>
                 <svg
                     viewBox='0 0 500 500'
                     className={[
@@ -109,7 +109,7 @@ const MenuButton = () => {
                     </text>
                 </svg>
             </motion.div>
-        </div>
+        </motion.div>
     );
 };
 

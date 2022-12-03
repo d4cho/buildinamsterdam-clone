@@ -37,8 +37,8 @@ const CaseDetails = ({ caseId, caseData }) => {
     const [scrollPosition, setScrollPosition] = useState(0);
 
     useEffect(() => {
+        const main = document.querySelector('#main');
         const scrollEvent = () => {
-            const main = document.querySelector('#main');
             const currentScrollPosition = main.scrollTop;
 
             if (currentScrollPosition > scrollPosition) {

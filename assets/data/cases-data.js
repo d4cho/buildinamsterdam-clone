@@ -244,11 +244,13 @@ export const casesData = [
                 type: 'fullscreen-image',
                 imageUrl: '/images/studiojob/studio2.webp',
                 alt: 'studiojob2',
+                gridPlacement: 'full',
             },
             {
                 type: 'portrait-video',
                 videoUrl: '/images/studiojob/rpreplay_final1668097126-1.mov',
                 backgroundImage: '/images/studiojob/bg1.webp',
+                gridPlacement: 'full',
             },
             {
                 type: 'fullscreen-image',
@@ -264,11 +266,13 @@ export const casesData = [
                 type: 'fullscreen-image',
                 imageUrl: '/images/studiojob/studio4.webp',
                 alt: 'studiojob4',
+                gridPlacement: 'full',
             },
             {
                 type: 'fullscreen-image',
                 imageUrl: '/images/studiojob/studio5.webp',
                 alt: 'studiojob5',
+                gridPlacement: 'full',
             },
         ],
     },

@@ -297,7 +297,7 @@ const CaseDetails = ({
                 renderedPages.push(
                     <section className={styles.section} key={n}>
                         {renderPageType(pages[n])}
-                        {renderPageType(pages[n + 1])}
+                        {pages[n + 1] && renderPageType(pages[n + 1])}
                     </section>
                 );
                 n = n + 2;

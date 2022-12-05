@@ -85,7 +85,7 @@ const MenuButton = () => {
                             ? styles.menu_open
                             : styles.curve_text_animation,
                         // desktop
-                        isMenuOpen || isFilterOpen
+                        isMenuOpen || isFilterOpen || isCaseDetailPage
                             ? ''
                             : touched
                             ? styles.exit

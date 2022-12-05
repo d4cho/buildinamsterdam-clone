@@ -8,43 +8,48 @@ export const casesData = [
         caseId: 'suitsupply',
         nextCaseId: 'studio-job',
         objectPosition: '36.29% 43.94%',
-        infoPage: {
-            heading1: 'creative partnership',
-            desc1: `Suitsupply was founded in 1999 as one of the first omnichannel brands in the world. Since 2018, we operate as their global creative lead. Through an ongoing partnership with their internal teams, we ensure all touchpoints are constantly aligned with their brand promise: "Don't just fit in, find your own perfect fit".`,
-            desc2: `Suitsupply provides a radical personal customer approach and brand experience through its 150 stores worldwide and digital services. It's our job to bridge the gap between their on and offline touchpoints.`,
-            redirectUrl: 'https://suitsupply.com/en-ca/',
-            heading2: 'branding',
-            heading2List: [
-                'Digital rebranding',
-                'Photography direction',
-                'Packaging',
-                'Social media',
-                'Omnichannel assets',
-            ],
-            heading3: 'e-commerce',
-            heading3List: [
-                'UX Design',
-                'UI Design',
-                'Design system',
-                'New ways to shop',
-                'Front-end development',
-            ],
-        },
         pages: [
+            {
+                type: 'info',
+                heading1: 'creative partnership',
+                desc1: `Suitsupply was founded in 1999 as one of the first omnichannel brands in the world. Since 2018, we operate as their global creative lead. Through an ongoing partnership with their internal teams, we ensure all touchpoints are constantly aligned with their brand promise: "Don't just fit in, find your own perfect fit".`,
+                desc2: `Suitsupply provides a radical personal customer approach and brand experience through its 150 stores worldwide and digital services. It's our job to bridge the gap between their on and offline touchpoints.`,
+                redirectUrl: 'https://suitsupply.com/en-ca/',
+                heading2: 'branding',
+                heading2List: [
+                    'Digital rebranding',
+                    'Photography direction',
+                    'Packaging',
+                    'Social media',
+                    'Omnichannel assets',
+                ],
+                heading3: 'e-commerce',
+                heading3List: [
+                    'UX Design',
+                    'UI Design',
+                    'Design system',
+                    'New ways to shop',
+                    'Front-end development',
+                ],
+            },
             {
                 type: 'fullscreen-image',
                 imageUrl: '/images/suitsupply/page1.webp',
                 alt: 'suitsupply1',
+                objectPosition: '50% 50%',
             },
             {
+                gridPlacement: 'full',
                 type: 'fullscreen-image-with-text',
                 textPosition: 'right',
                 imageUrl: '/images/suitsupply/page2.webp',
                 alt: 'suitsupply2',
                 heading: 'digital rebranding',
                 desc: 'We established a global digital rebranding that turned their .com into a digital flagship store.',
+                objectPosition: '0% 20%',
             },
             {
+                gridPlacement: 'full',
                 type: 'centered-text',
                 heading: 'visually driven e-commerce',
                 desc: `We set up a digital design language that's rooted in our 'Minimum UI, maximum content' design principle. Turning Suitsupply.com into a visually driven e-commerce platform.`,
@@ -62,6 +67,7 @@ export const casesData = [
                 desc: 'Together with Suitsupply, we created a highly intuitive digital tool that allows the users to easily generate numerous looks & styles in no time.',
             },
             {
+                gridPlacement: 'full',
                 type: 'fullscreen-video-with-text',
                 textPosition: 'right',
                 videoUrl:
@@ -95,6 +101,7 @@ export const casesData = [
                 desc: 'We developed a fast & effective tool allowing visitors to plan a digital or in-store appointment with their personal stylists.',
             },
             {
+                gridPlacement: 'full',
                 type: 'fullscreen-image-with-text',
                 textPosition: 'left',
                 imageUrl: '/images/suitsupply/page11.webp',
@@ -103,11 +110,13 @@ export const casesData = [
                 desc: 'We created editorials in the shape of digital magazines that include the latest & greatest in products, style tips, inside looks & all things Suitsupply.',
             },
             {
+                gridPlacement: 'full',
                 type: 'centered-text',
                 heading: 'content direction',
                 desc: `We established new content direction for Suitsupply to elevate their products, looks & style, and to bring about an emotional touch onto their content.`,
             },
             {
+                gridPlacement: 'full',
                 type: 'fullscreen-video-with-text',
                 textPosition: 'right',
                 videoUrl:
@@ -116,6 +125,7 @@ export const casesData = [
                 desc: 'We enrich Suitsupply editorial content by connecting their makers and suppliers with various photographers.',
             },
             {
+                gridPlacement: 'full',
                 type: 'fullscreen-video-with-text',
                 textPosition: 'right',
                 videoUrl:
@@ -137,6 +147,7 @@ export const casesData = [
                 desc: `On Suitsupply's Instagram, we consistently hold on to its signature design language, allowing the brand to successfully integrate their .com & social shopping experience.`,
             },
             {
+                gridPlacement: 'full',
                 type: 'centered-text',
                 heading: 'design system',
                 desc: `We are working side by side with Suitsupply’s development team to achieve a comprehensive design system, in order to enhance the design creation and development time.`,
@@ -201,28 +212,29 @@ export const casesData = [
         caseId: 'studio-job',
         nextCaseId: 'suitsupply',
         objectPosition: '11% 44%',
-        infoPage: {
-            heading1: 'artpiece for an artist',
-            desc1: `The highly acclaimed art & design studio combines both traditional and modern techniques, producing once-in-a-lifetime objects for both the art world and for mass production.`,
-            desc2: ``,
-            redirectUrl: 'https://www.studio-job.com/',
-            heading2: 'design',
-            heading2List: [
-                'Identity design',
-                'Platform concept',
-                'UX Design',
-                'UI Design',
-                'Design system',
-            ],
-            heading3: 'development',
-            heading3List: [
-                'Front-end development',
-                'Back-end development',
-                'Content Management System',
-            ],
-            backgroundColor: 'rgb(54, 151, 93)',
-        },
         pages: [
+            {
+                type: 'info',
+                heading1: 'artpiece for an artist',
+                desc1: `The highly acclaimed art & design studio combines both traditional and modern techniques, producing once-in-a-lifetime objects for both the art world and for mass production.`,
+                desc2: ``,
+                redirectUrl: 'https://www.studio-job.com/',
+                heading2: 'design',
+                heading2List: [
+                    'Identity design',
+                    'Platform concept',
+                    'UX Design',
+                    'UI Design',
+                    'Design system',
+                ],
+                heading3: 'development',
+                heading3List: [
+                    'Front-end development',
+                    'Back-end development',
+                    'Content Management System',
+                ],
+                backgroundColor: 'rgb(54, 151, 93)',
+            },
             {
                 type: 'fullscreen-image',
                 imageUrl: '/images/studiojob/studio1.webp',

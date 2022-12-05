@@ -3,7 +3,6 @@ import styles from '../../styles/CaseDetails.module.css';
 import { casesData } from '../../assets/data/cases-data';
 import Header from '../../components/Header';
 import { useAppContext } from '../../context/AppContext';
-import ErrorPage from 'next/error';
 import NotFoundPage from '../404';
 
 // Generates `/cases/1`, `/cases/2`, ...
@@ -68,7 +67,7 @@ const CaseDetails = ({
         return <NotFoundPage />;
     }
 
-    const { setScrollDir } = useAppContext();
+    const { view, setScrollDir } = useAppContext();
 
     const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -87,8 +86,12 @@ const CaseDetails = ({
         };
 
         main.addEventListener('scroll', scrollEvent);
+        document.body.style.overflow = 'hidden';
 
-        return () => main.removeEventListener('scroll', scrollEvent);
+        return () => {
+            main.removeEventListener('scroll', scrollEvent);
+            document.body.style.overflow = 'auto';
+        };
     }, [scrollPosition]);
 
     const getLogoColor = (caseId) => {
@@ -101,13 +104,65 @@ const CaseDetails = ({
         }
     };
 
-    const { url, title, desc, objectPosition, infoPage, pages, nextCaseId } =
-        caseData;
+    const { url, title, desc, objectPosition, pages, nextCaseId } = caseData;
 
     const renderPageType = (pageInfo) => {
         const { type } = pageInfo;
 
         switch (type) {
+            case 'info':
+                return (
+                    <div
+                        className={styles.info_page}
+                        style={{
+                            ...(pageInfo.backgroundColor && {
+                                backgroundColor: pageInfo.backgroundColor,
+                            }),
+                        }}
+                    >
+                        <div className={styles.info_page_top_container}>
+                            <h2>{pageInfo.heading1}</h2>
+                            <p>{pageInfo.desc1}</p>
+                            <p>{pageInfo.desc2}</p>
+                            <a target='_blank' href={pageInfo.redirectUrl}>
+                                <div>visit platform</div>
+                            </a>
+                        </div>
+                        <div className={styles.info_page_bottom_container}>
+                            <div>
+                                <h3>{pageInfo.heading2}</h3>
+                                <ul>
+                                    {pageInfo.heading2List.map((item, idx) => {
+                                        return (
+                                            <li key={idx}>{`${item} ${
+                                                idx !==
+                                                pageInfo.heading2List.length - 1
+                                                    ? '·'
+                                                    : ''
+                                            } `}</li>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
+                            <div>
+                                <h3>{pageInfo.heading3}</h3>
+                                <ul>
+                                    {pageInfo.heading3List.map((item, idx) => {
+                                        return (
+                                            <li key={idx}>{`${item} ${
+                                                idx !==
+                                                pageInfo.heading3List.length - 1
+                                                    ? '·'
+                                                    : ''
+                                            } `}</li>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                );
+
             case 'fullscreen-image':
             case 'fullscreen-image-with-text':
                 return (
@@ -225,6 +280,33 @@ const CaseDetails = ({
         }
     };
 
+    const renderDesktopPages = () => {
+        let renderedPages = [];
+        let n = 0;
+        while (n < pages.length) {
+            if (pages[n].gridPlacement === 'full') {
+                renderedPages.push(
+                    <section className={styles.section} key={n}>
+                        <div className={styles.full_grid}>
+                            {renderPageType(pages[n])}
+                        </div>
+                    </section>
+                );
+                n = n + 1;
+            } else {
+                renderedPages.push(
+                    <section className={styles.section} key={n}>
+                        {renderPageType(pages[n])}
+                        {renderPageType(pages[n + 1])}
+                    </section>
+                );
+                n = n + 2;
+            }
+        }
+
+        return renderedPages;
+    };
+
     return (
         <div className={styles.container}>
             <main className={styles.main} id='main'>
@@ -250,65 +332,16 @@ const CaseDetails = ({
                     </footer>
                 </div>
 
-                {/* info page */}
-                <div
-                    className={styles.info_page}
-                    style={{
-                        ...(infoPage.backgroundColor && {
-                            backgroundColor: infoPage.backgroundColor,
-                        }),
-                    }}
-                >
-                    <div className={styles.info_page_top_container}>
-                        <h2>{infoPage.heading1}</h2>
-                        <p>{infoPage.desc1}</p>
-                        <p>{infoPage.desc2}</p>
-                        <a target='_blank' href={infoPage.redirectUrl}>
-                            <div>visit platform</div>
-                        </a>
-                    </div>
-                    <div className={styles.info_page_bottom_container}>
-                        <div>
-                            <h3>{infoPage.heading2}</h3>
-                            <ul>
-                                {infoPage.heading2List.map((item, idx) => {
-                                    return (
-                                        <li key={idx}>{`${item} ${
-                                            idx !==
-                                            infoPage.heading2List.length - 1
-                                                ? '·'
-                                                : ''
-                                        } `}</li>
-                                    );
-                                })}
-                            </ul>
-                        </div>
-                        <div>
-                            <h3>{infoPage.heading3}</h3>
-                            <ul>
-                                {infoPage.heading3List.map((item, idx) => {
-                                    return (
-                                        <li key={idx}>{`${item} ${
-                                            idx !==
-                                            infoPage.heading3List.length - 1
-                                                ? '·'
-                                                : ''
-                                        } `}</li>
-                                    );
-                                })}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                {/* pages */}
-                {pages.map((pageInfo, idx) => {
-                    return (
-                        <React.Fragment key={idx}>
-                            {renderPageType(pageInfo)}
-                        </React.Fragment>
-                    );
-                })}
+                {/* mobile pages */}
+                {view === 'mobile'
+                    ? pages.map((pageInfo, idx) => {
+                          return (
+                              <React.Fragment key={idx}>
+                                  {renderPageType(pageInfo)}
+                              </React.Fragment>
+                          );
+                      })
+                    : renderDesktopPages()}
 
                 {/* last page */}
                 <div

@@ -3,7 +3,8 @@ import styles from '../../styles/CaseDetails.module.css';
 import { casesData } from '../../assets/data/cases-data';
 import Header from '../../components/Header';
 import { useAppContext } from '../../context/AppContext';
-import Link from 'next/link';
+import ErrorPage from 'next/error';
+import NotFoundPage from '../404';
 
 // Generates `/cases/1`, `/cases/2`, ...
 export const getStaticPaths = async () => {
@@ -23,16 +24,50 @@ export const getStaticPaths = async () => {
 
 // `getStaticPaths` requires using `getStaticProps`
 export const getStaticProps = async (context) => {
-    const caseId = context.params.caseId;
-    const caseData = casesData.filter((item) => item.caseId === caseId)[0];
+    try {
+        const caseId = context.params.caseId;
+        const caseData = casesData.filter((item) => item.caseId === caseId)[0];
+        const nextCaseId = caseData.nextCaseId;
+        const nextCaseData = casesData.filter(
+            (item) => item.caseId === nextCaseId
+        )[0];
+        const {
+            title: nextCaseTitle,
+            url: nextCaseImgUrl,
+            objectPosition: nextCaseObjectPosition,
+        } = nextCaseData;
 
-    return {
-        // Passed to the page component as props
-        props: { caseId: caseId, caseData: caseData },
-    };
+        return {
+            // Passed to the page component as props
+            props: {
+                caseId: caseId,
+                caseData: caseData,
+                nextCaseTitle: nextCaseTitle,
+                nextCaseImgUrl: nextCaseImgUrl,
+                nextCaseObjectPosition: nextCaseObjectPosition,
+            },
+        };
+    } catch (error) {
+        return {
+            props: {
+                notFound: true,
+            },
+        };
+    }
 };
 
-const CaseDetails = ({ caseId, caseData }) => {
+const CaseDetails = ({
+    caseId,
+    caseData,
+    nextCaseTitle,
+    nextCaseImgUrl,
+    nextCaseObjectPosition,
+    notFound,
+}) => {
+    if (notFound) {
+        return <NotFoundPage />;
+    }
+
     const { setScrollDir } = useAppContext();
 
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -66,7 +101,8 @@ const CaseDetails = ({ caseId, caseData }) => {
         }
     };
 
-    const { url, title, desc, infoPage, pages, nextCaseId } = caseData;
+    const { url, title, desc, objectPosition, infoPage, pages, nextCaseId } =
+        caseData;
 
     const renderPageType = (pageInfo) => {
         const { type } = pageInfo;
@@ -80,11 +116,11 @@ const CaseDetails = ({ caseId, caseData }) => {
                             className={styles.fullscreen_image}
                             src={pageInfo.imageUrl}
                             alt={pageInfo.alt}
-                            style={
-                                pageInfo.objectPosition && {
+                            style={{
+                                ...(pageInfo.objectPosition && {
                                     objectPosition: pageInfo.objectPosition,
-                                }
-                            }
+                                }),
+                            }}
                         />
                         {pageInfo.heading && pageInfo.desc && (
                             <div
@@ -116,11 +152,14 @@ const CaseDetails = ({ caseId, caseData }) => {
                 return (
                     <div
                         className={styles.video_portrait_centered}
-                        style={
-                            pageInfo.backgroundColor && {
+                        style={{
+                            ...(pageInfo.backgroundColor && {
                                 backgroundColor: pageInfo.backgroundColor,
-                            }
-                        }
+                            }),
+                            ...(pageInfo.backgroundImage && {
+                                backgroundImage: `url(${pageInfo.backgroundImage})`,
+                            }),
+                        }}
                     >
                         <div
                             className={
@@ -196,6 +235,11 @@ const CaseDetails = ({ caseId, caseData }) => {
                         className={styles.main_page_image}
                         src={url}
                         alt={title}
+                        style={{
+                            ...(objectPosition && {
+                                objectPosition: objectPosition,
+                            }),
+                        }}
                     />
                     <footer className={styles.main_page_footer}>
                         <span className={styles.main_page_title}>{title}</span>
@@ -207,7 +251,14 @@ const CaseDetails = ({ caseId, caseData }) => {
                 </div>
 
                 {/* info page */}
-                <div className={styles.info_page}>
+                <div
+                    className={styles.info_page}
+                    style={{
+                        ...(infoPage.backgroundColor && {
+                            backgroundColor: infoPage.backgroundColor,
+                        }),
+                    }}
+                >
                     <div className={styles.info_page_top_container}>
                         <h2>{infoPage.heading1}</h2>
                         <p>{infoPage.desc1}</p>
@@ -224,8 +275,9 @@ const CaseDetails = ({ caseId, caseData }) => {
                                     return (
                                         <li key={idx}>{`${item} ${
                                             idx !==
-                                                infoPage.heading2List.length -
-                                                    1 && '·'
+                                            infoPage.heading2List.length - 1
+                                                ? '·'
+                                                : ''
                                         } `}</li>
                                     );
                                 })}
@@ -238,8 +290,9 @@ const CaseDetails = ({ caseId, caseData }) => {
                                     return (
                                         <li key={idx}>{`${item} ${
                                             idx !==
-                                                infoPage.heading3List.length -
-                                                    1 && '·'
+                                            infoPage.heading3List.length - 1
+                                                ? '·'
+                                                : ''
                                         } `}</li>
                                     );
                                 })}
@@ -258,10 +311,27 @@ const CaseDetails = ({ caseId, caseData }) => {
                 })}
 
                 {/* last page */}
-                <div className={styles.scroll_snap_wrapper}>
-                    <a href={`/cases/${nextCaseId}`}>
-                        <h1>{caseId + ' testtest'}</h1>
-                    </a>
+                <div
+                    className={styles.scroll_snap_wrapper}
+                    style={{ backgroundColor: '#000' }}
+                >
+                    <img
+                        className={styles.main_page_image}
+                        src={nextCaseImgUrl}
+                        alt={nextCaseTitle}
+                        style={{
+                            opacity: 0.5,
+                            ...(nextCaseObjectPosition && {
+                                objectPosition: nextCaseObjectPosition,
+                            }),
+                        }}
+                    />
+                    <div className={styles.last_page_text_wrapper}>
+                        <div className={styles.next_up_wrapper}>
+                            {`Next up - ${nextCaseTitle}`}
+                        </div>
+                        <a href={`/cases/${nextCaseId}`}>explore</a>
+                    </div>
                 </div>
             </main>
         </div>

@@ -110,9 +110,3 @@
         gap: 1em 3rem;
     }
 }
-
-@media only screen and (min-width: 2000px) {
-    .bottom {
-        padding: 20rem 5vw 3.75rem 4vw;
-    }
-}

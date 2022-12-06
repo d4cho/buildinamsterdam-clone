@@ -1,0 +1,35 @@
+.container {
+    width: fit-content;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.text {
+    translate: 0 0;
+    transition: translate 0.2s linear;
+}
+
+.dot {
+    background-color: var(--color-orange);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    translate: 0 -4px;
+    opacity: 0;
+    transition: left 0.2s linear, opacity 0.2s linear;
+}
+
+.container:hover .dot {
+    transition: left 0.2s linear, opacity 0.2s linear;
+    left: 0;
+    opacity: 1;
+}
+
+.container:hover .text {
+    transition: translate 0.2s linear;
+    translate: 17.5px 0;
+}

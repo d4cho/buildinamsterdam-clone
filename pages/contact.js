@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import CaseCardsLayout from '../components/CaseCardsLayout';
 import { contactImages } from '../assets/data/contact-data';
 import { useAppContext } from '../context/AppContext';
+import SlidingText from '../components/SlidingText';
 
 const Contact = () => {
     const { view } = useAppContext();
@@ -38,25 +39,27 @@ const Contact = () => {
                     <div>
                         <h2 className={styles.heading2}>write us</h2>
                         <div className={styles.sliding_text}>
-                            hello@buildinamsterdam.com
+                            <SlidingText text={'hello@buildinamsterdam.com'} />
                         </div>
                     </div>
                     <div>
                         <h2 className={styles.heading2}>call us</h2>
                         <div className={styles.sliding_text}>
-                            +31 (0)20 223 00 66
+                            <SlidingText text={'+31 (0)20 223 00 66'} />
                         </div>
                     </div>
                     <div>
                         <h2 className={styles.heading2}>join us</h2>
                         <div className={styles.sliding_text}>
-                            jobs.buildinamsterdam.com
+                            <SlidingText text={'jobs.buildinamsterdam.com'} />
                         </div>
                     </div>
                     <div>
                         <h2 className={styles.heading2}>visit us</h2>
                         <div className={styles.sliding_text}>
-                            Baarsjesweg 285-286 | 1058 AE Amsterdam
+                            <SlidingText
+                                text={'Baarsjesweg 285-286 | 1058 AE Amsterdam'}
+                            />
                         </div>
                     </div>
                     <div>
@@ -69,10 +72,18 @@ const Contact = () => {
                             follow us
                         </h2>
                         <ul className={styles.ul}>
-                            <li className={styles.sliding_text}>Instagram</li>
-                            <li className={styles.sliding_text}>Facebook</li>
-                            <li className={styles.sliding_text}>Twitter</li>
-                            <li className={styles.sliding_text}>LinkedIn</li>
+                            <li className={styles.sliding_text}>
+                                <SlidingText text={'Instagram'} />
+                            </li>
+                            <li className={styles.sliding_text}>
+                                <SlidingText text={'Facebook'} />
+                            </li>
+                            <li className={styles.sliding_text}>
+                                <SlidingText text={'Twitter'} />
+                            </li>
+                            <li className={styles.sliding_text}>
+                                <SlidingText text={'LinkedIn'} />
+                            </li>
                         </ul>
                     </div>
                 </div>

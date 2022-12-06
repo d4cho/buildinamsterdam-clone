@@ -26,7 +26,7 @@ const Home = () => {
             transition={{ delay: 2.2 }}
         >
             <Head>
-                <title>Clone | Build in Amsterdam | Home</title>
+                <title>Home | Build in Amsterdam Clone</title>
                 <meta name='description' content='buildinamsterdam clone' />
             </Head>
 

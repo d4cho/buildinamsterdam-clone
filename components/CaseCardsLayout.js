@@ -66,9 +66,13 @@ const CaseCardsLayout = ({ leftColImages, rightColImages }) => {
                             key={'left' + idx}
                             className={styles.left_item_container}
                         >
-                            <Link href={`/cases/${caseData.caseId}`}>
+                            {caseData.caseId ? (
+                                <Link href={`/cases/${caseData.caseId}`}>
+                                    <CaseCards caseData={caseData} />
+                                </Link>
+                            ) : (
                                 <CaseCards caseData={caseData} />
-                            </Link>
+                            )}
                         </div>
                     );
                 })}
@@ -86,9 +90,13 @@ const CaseCardsLayout = ({ leftColImages, rightColImages }) => {
                             key={'right' + idx}
                             className={styles.right_item_container}
                         >
-                            <Link href={`/cases/${caseData.caseId}`}>
+                            {caseData.caseId ? (
+                                <Link href={`/cases/${caseData.caseId}`}>
+                                    <CaseCards caseData={caseData} />
+                                </Link>
+                            ) : (
                                 <CaseCards caseData={caseData} />
-                            </Link>
+                            )}
                         </div>
                     );
                 })}

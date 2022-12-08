@@ -4,6 +4,7 @@ import { aboutData } from '../assets/data/about-data';
 import { motion, useScroll } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import SlidingText from '../components/SlidingText';
+import ResponsiveCardsLayout from '../components/ResponsiveCardsLayout';
 
 const About = () => {
     const { sectionOneImages, sectionFiveData, sectionSixData } = aboutData;
@@ -15,8 +16,6 @@ const About = () => {
         // triggerOnce: true,
         // rootMargin: '0px 0px',
     });
-
-    console.log(inView);
 
     const [sec1ScrollPercent, setSec1ScrollPercent] = useState(0);
 
@@ -141,9 +140,7 @@ const About = () => {
                         </a>
                     </div>
                 </div>
-                <div style={{ backgroundColor: 'yellow', height: '100vh' }}>
-                    images layout placeholder
-                </div>
+                <ResponsiveCardsLayout />
             </section>
 
             {/* section 5 - our expertise */}
@@ -153,8 +150,8 @@ const About = () => {
                 </header>
                 <div className={styles.section5_list_wrapper}>
                     {sectionFiveData.map((item, idx) => (
-                        <li>
-                            <h2 key={idx}>{item.heading}</h2>
+                        <li key={idx}>
+                            <h2>{item.heading}</h2>
                             <ul className={styles.section5_ul}>
                                 {item.list.map((listItem, index) => (
                                     <li key={index}>{listItem}</li>
@@ -172,7 +169,7 @@ const About = () => {
                 </header>
                 <div className={styles.section6_list_wrapper}>
                     {sectionSixData.map((item, idx) => (
-                        <li>
+                        <li key={idx}>
                             <p>{item.number}</p>
                             <div className={styles.section6_text_wrapper}>
                                 <p>{item.text}</p>

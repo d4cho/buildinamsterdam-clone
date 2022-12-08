@@ -38,6 +38,7 @@ const CaseCardsLayout = ({ leftColImages, rightColImages }) => {
         const onScroll = () => {
             const rightColOffsetTop = rightColRef.current.offsetTop;
             const totalScrollableAfterEl =
+                // getTotalScrollable works to end scroll at end of page scroll
                 getTotalScrollable() - rightColOffsetTop;
             let scrolledAmount = window.pageYOffset;
 

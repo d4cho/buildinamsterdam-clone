@@ -3,9 +3,10 @@ import styles from '../styles/About.module.css';
 import { aboutData } from '../assets/data/about-data';
 import { motion, useScroll } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import SlidingText from '../components/SlidingText';
 
 const About = () => {
-    const { sectionOneImages } = aboutData;
+    const { sectionOneImages, sectionFiveData, sectionSixData } = aboutData;
 
     const section1Ref = useRef();
 
@@ -119,6 +120,89 @@ const About = () => {
                         >
                             are driven by emotion.
                         </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* section 3 */}
+            <section className={styles.section3}>section 3 placeholder</section>
+
+            {/* section 4 */}
+            <section className={styles.section4}>
+                <div className={styles.section4_text_wrapper}>
+                    <p>
+                        We are an international team of 40+ passionate
+                        designers, developers, brand strategists & data
+                        analysts.
+                    </p>
+                    <div>
+                        <a href='#'>
+                            <SlidingText text={'join the team'} />
+                        </a>
+                    </div>
+                </div>
+                <div style={{ backgroundColor: 'yellow', height: '100vh' }}>
+                    images layout placeholder
+                </div>
+            </section>
+
+            {/* section 5 - our expertise */}
+            <section className={styles.section5}>
+                <header className={styles.section5_header}>
+                    <h2>our expertise</h2>
+                </header>
+                <div className={styles.section5_list_wrapper}>
+                    {sectionFiveData.map((item, idx) => (
+                        <li>
+                            <h2 key={idx}>{item.heading}</h2>
+                            <ul className={styles.section5_ul}>
+                                {item.list.map((listItem, index) => (
+                                    <li key={index}>{listItem}</li>
+                                ))}
+                            </ul>
+                        </li>
+                    ))}
+                </div>
+            </section>
+
+            {/* section 6 - stats & facts */}
+            <section className={styles.section6}>
+                <header className={styles.section6_header}>
+                    <h2>stats&facts</h2>
+                </header>
+                <div className={styles.section6_list_wrapper}>
+                    {sectionSixData.map((item, idx) => (
+                        <li>
+                            <p>{item.number}</p>
+                            <div className={styles.section6_text_wrapper}>
+                                <p>{item.text}</p>
+                                {item.link && (
+                                    <a href='#'>
+                                        <SlidingText text={item.link} />
+                                    </a>
+                                )}
+                            </div>
+                        </li>
+                    ))}
+                </div>
+            </section>
+
+            {/* section 7 - last page */}
+            <section className={styles.section7}>
+                <div className={styles.section7_wrapper}>
+                    <div className={styles.section7_text_wrapper}>
+                        <h2>Join us</h2>
+                        <a href='#'>
+                            <SlidingText text={'reach out'} />
+                        </a>
+                    </div>
+                </div>
+                <div className={styles.section7_wrapper}>
+                    <div className={styles.section7_text_wrapper}>
+                        <h2>Work with us</h2>
+                        <a href='#'>
+                            <SlidingText text={'introduce yourself'} />
+                        </a>
                     </div>
                 </div>
             </section>

@@ -10,6 +10,7 @@ const About = () => {
     const { sectionOneImages, sectionFiveData, sectionSixData } = aboutData;
 
     const section1Ref = useRef();
+    const section3Ref = useRef();
 
     const [section2Ref, inView] = useInView({
         /* Optional options */
@@ -18,6 +19,7 @@ const About = () => {
     });
 
     const [sec1ScrollPercent, setSec1ScrollPercent] = useState(0);
+    const [sec3ScrollPercent, setSec3ScrollPercent] = useState(0);
 
     // section 1 scroll animation
     useEffect(() => {
@@ -37,6 +39,27 @@ const About = () => {
         // clean up
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
+
+    // section 3 scroll animation
+    useEffect(() => {
+        const onScroll = () => {
+            const sec3OffsetTop = section3Ref.current.offsetTop; // distance of ref div from top
+            const scrolledAmount = window.pageYOffset; // scrolled Y distance
+            if (
+                scrolledAmount >= sec3OffsetTop && // ref div is at top of screen
+                scrolledAmount - sec3OffsetTop < 900 // only set scroll % during height of ref div
+            ) {
+                setSec3ScrollPercent((scrolledAmount - sec3OffsetTop) / 900);
+            }
+        };
+
+        window.addEventListener('scroll', onScroll);
+
+        // clean up
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
+
+    console.log(sec3ScrollPercent);
 
     return (
         <div className={styles.container}>
@@ -124,7 +147,216 @@ const About = () => {
             </section>
 
             {/* section 3 */}
-            <section className={styles.section3}>section 3 placeholder</section>
+            <section className={styles.section3}>
+                <div className={styles.section3_wrapper} ref={section3Ref}>
+                    <div className={styles.section3_sticky}>
+                        <div
+                            style={{
+                                transform: `translateX(${
+                                    sec3ScrollPercent * 510 >= 255
+                                        ? sec3ScrollPercent * -510 +
+                                          510 * (1 - sec3ScrollPercent)
+                                        : 0
+                                }px) translateZ(0px)`,
+                            }}
+                        >
+                            <div className={styles.section3_flex}>
+                                <div
+                                    style={{
+                                        top: '100%',
+                                        left: '-70vw',
+                                        width: '90vw',
+                                        opacity: `${sec3ScrollPercent * 2}`,
+                                        transform: `translateX(${
+                                            sec3ScrollPercent * 510 >= 255
+                                                ? sec3ScrollPercent * 510 -
+                                                  510 * (1 - sec3ScrollPercent)
+                                                : 0
+                                        }px) translateY(${
+                                            (1 - sec3ScrollPercent * 2) * 200 >=
+                                            0
+                                                ? (1 - sec3ScrollPercent * 2) *
+                                                  200
+                                                : 0
+                                        }%) translateZ(0px)`,
+                                    }}
+                                >
+                                    <div
+                                        className={styles.section3_text_wrapper}
+                                    >
+                                        <div className={styles.section3_text}>
+                                            By combining strategy, branding &
+                                            e-commerce, we build digital
+                                            flagship stores that go beyond logic
+                                            & redefine conversion.
+                                        </div>
+                                        <div className={styles.section3_link}>
+                                            <a href='#'>
+                                                <SlidingText
+                                                    text={'read manifesto'}
+                                                />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={styles.section3_images_wrapper}>
+                                    <div
+                                        className={styles.section3_image_div}
+                                        style={{
+                                            opacity: 1,
+                                            transform: `translateX(0%) translateY(0px) scale(${
+                                                -sec3ScrollPercent + 1.5 >= 1
+                                                    ? -sec3ScrollPercent + 1.5
+                                                    : 1
+                                            }) translateZ(0px)`,
+                                        }}
+                                    >
+                                        <img
+                                            src='/images/about/section3-1.webp'
+                                            alt='mammut'
+                                        />
+                                        <div
+                                            className={
+                                                styles.image_text_wrapper
+                                            }
+                                            style={{
+                                                opacity: `${
+                                                    sec3ScrollPercent >= 0.4
+                                                        ? 1
+                                                        : 0
+                                                }`,
+                                            }}
+                                        >
+                                            <span
+                                                className={styles.image_title}
+                                            >
+                                                Mammut
+                                            </span>
+                                            <span className={styles.image_dot}>
+                                                {' '}
+                                                ·{' '}
+                                            </span>
+                                            <span className={styles.image_desc}>
+                                                Moved by mountains
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className={styles.section3_image_div}
+                                        style={{
+                                            opacity: `${sec3ScrollPercent * 2}`,
+                                            transform: `translateX(${
+                                                (1 - sec3ScrollPercent * 2) *
+                                                    50 >=
+                                                0
+                                                    ? (1 -
+                                                          sec3ScrollPercent *
+                                                              2) *
+                                                      50
+                                                    : 0
+                                            }%) translateY(${
+                                                (1 - sec3ScrollPercent * 2) *
+                                                    120 >=
+                                                0
+                                                    ? (1 -
+                                                          sec3ScrollPercent *
+                                                              2) *
+                                                      120
+                                                    : 0
+                                            }%) scale(1) translateZ(0px)`,
+                                        }}
+                                    >
+                                        <img
+                                            src='/images/about/section3-2.webp'
+                                            alt='moooi'
+                                        />
+                                        <div
+                                            className={
+                                                styles.image_text_wrapper
+                                            }
+                                            style={{
+                                                opacity: `${
+                                                    sec3ScrollPercent >= 0.4
+                                                        ? 1
+                                                        : 0
+                                                }`,
+                                            }}
+                                        >
+                                            <span
+                                                className={styles.image_title}
+                                            >
+                                                Mooi
+                                            </span>
+                                            <span className={styles.image_dot}>
+                                                {' '}
+                                                ·{' '}
+                                            </span>
+                                            <span className={styles.image_desc}>
+                                                Multi-sensory flagship store
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className={styles.section3_image_div}
+                                        style={{
+                                            opacity: `${sec3ScrollPercent * 2}`,
+                                            transform: `translateX(${
+                                                (1 - sec3ScrollPercent * 2) *
+                                                    50 >=
+                                                0
+                                                    ? (1 -
+                                                          sec3ScrollPercent *
+                                                              2) *
+                                                      50
+                                                    : 0
+                                            }%) translateY(${
+                                                (1 - sec3ScrollPercent * 2) *
+                                                    120 >=
+                                                0
+                                                    ? (1 -
+                                                          sec3ScrollPercent *
+                                                              2) *
+                                                      120
+                                                    : 0
+                                            }%) scale(1) translateZ(0px)`,
+                                        }}
+                                    >
+                                        <img
+                                            src='/images/about/section3-3.webp'
+                                            alt='suitsupply'
+                                        />
+                                        <div
+                                            className={
+                                                styles.image_text_wrapper
+                                            }
+                                            style={{
+                                                opacity: `${
+                                                    sec3ScrollPercent >= 0.4
+                                                        ? 1
+                                                        : 0
+                                                }`,
+                                            }}
+                                        >
+                                            <span
+                                                className={styles.image_title}
+                                            >
+                                                Suitsupply
+                                            </span>
+                                            <span className={styles.image_dot}>
+                                                {' '}
+                                                ·{' '}
+                                            </span>
+                                            <span className={styles.image_desc}>
+                                                Creative partnership
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* section 4 */}
             <section className={styles.section4}>

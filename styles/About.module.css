@@ -147,10 +147,103 @@
 
 /* section 3 */
 .section3 {
-    /* background-color: #fff; */
-    background-color: aquamarine;
+    background-color: #fff;
+    padding-bottom: 3rem;
+}
+.section3_wrapper {
+    height: calc(100vh + 900px);
+}
+.section3_sticky {
+    position: sticky;
+    top: 0px;
+    width: 100%;
+    overflow: hidden;
+}
+.section3_flex {
+    display: inline-flex;
+    flex-direction: column-reverse;
+    /* align-items: center; */
+}
+.section3_text_wrapper {
+    margin-top: 2rem;
+    padding: 0rem 2.2rem 0rem 5.263vw;
+}
+.section3_text {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+.section3_link {
+    margin-top: 1.5rem;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.section3_images_wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.25rem;
+    padding: 3.75rem 0rem 0rem 5.263vw;
+    height: 100%;
+    overflow: visible;
+}
+.section3_image_div {
     position: relative;
-    height: 100vh;
+    width: 70vw;
+    min-width: 70vw;
+    height: 50vh;
+    transform-origin: 20% 35%;
+}
+.section3_image_div > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    box-sizing: border-box;
+    padding: 0;
+    border: none;
+    margin: auto;
+    display: block;
+    width: 0;
+    height: 0;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+.image_text_wrapper {
+    position: absolute;
+    z-index: 1;
+    left: 1.25rem;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 12.5rem;
+    color: #fff;
+    transition: opacity 0.4s linear;
+}
+.image_title {
+    font-family: NeueHaasGrotesk-Medium, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+.image_dot,
+.image_desc {
+    font-family: NeueHaasGrotesk-Roman, Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.2;
 }
 
 /* section 4 */

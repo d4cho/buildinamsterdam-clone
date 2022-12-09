@@ -59,8 +59,6 @@ const About = () => {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
-    console.log(sec3ScrollPercent);
-
     return (
         <div className={styles.container}>
             {/* section 1 */}

@@ -5,8 +5,11 @@ import { motion, useScroll } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import SlidingText from '../components/SlidingText';
 import ResponsiveCardsLayout from '../components/ResponsiveCardsLayout';
+import { useAppContext } from '../context/AppContext';
 
 const About = () => {
+    const { view } = useAppContext();
+    const sec1Height = view === 'mobile' ? 830 : 388;
     const { sectionOneImages, sectionFiveData, sectionSixData } = aboutData;
 
     const section1Ref = useRef();
@@ -28,9 +31,11 @@ const About = () => {
             const scrolledAmount = window.pageYOffset; // scrolled Y distance
             if (
                 scrolledAmount >= sec1OffsetTop && // ref div is at top of screen
-                scrolledAmount - sec1OffsetTop < 830 // only set scroll % during height of ref div
+                scrolledAmount - sec1OffsetTop < sec1Height // only set scroll % during height of ref div
             ) {
-                setSec1ScrollPercent((scrolledAmount - sec1OffsetTop) / 830);
+                setSec1ScrollPercent(
+                    (scrolledAmount - sec1OffsetTop) / sec1Height
+                );
             }
         };
 
@@ -77,7 +82,9 @@ const About = () => {
                         <div
                             className={styles.sliding_img_mover}
                             style={{
-                                translate: `${-sec1ScrollPercent * 830}px 0`,
+                                translate: `${
+                                    -sec1ScrollPercent * sec1Height
+                                }px 0`,
                             }}
                         >
                             <div className={styles.sliding_img_grid}>

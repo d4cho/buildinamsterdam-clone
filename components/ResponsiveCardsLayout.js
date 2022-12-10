@@ -164,7 +164,7 @@ const ResponsiveCardsLayout = () => {
 
                     <div
                         ref={rightColRef}
-                        className={[styles.left_col].join(' ')}
+                        className={[styles.right_col].join(' ')}
                         style={{
                             translate: `0 ${percentToScroll * colHeightDiff}px`,
                         }}
@@ -181,12 +181,12 @@ const ResponsiveCardsLayout = () => {
                         })}
                     </div>
 
-                    <div className={[styles.right_col].join(' ')}>
-                        {imageLists.desktop.right.map((faceData, idx) => {
+                    <div className={[styles.left_col].join(' ')}>
+                        {imageLists.desktop.rightRight.map((faceData, idx) => {
                             return (
                                 <div
-                                    key={'right' + idx}
-                                    className={styles.left_item_container}
+                                    key={'rightRight' + idx}
+                                    className={styles.right_item_container}
                                 >
                                     <FaceCards faceData={faceData} />
                                 </div>
@@ -197,16 +197,14 @@ const ResponsiveCardsLayout = () => {
                     <div
                         className={[styles.right_col].join(' ')}
                         style={{
-                            translate: `0 ${
-                                percentToScroll * colHeightDiff * 2.81 // hacky!
-                            }px`,
+                            translate: `0 ${percentToScroll * colHeightDiff}px`,
                         }}
                     >
-                        {imageLists.desktop.rightRight.map((faceData, idx) => {
+                        {imageLists.desktop.right.map((faceData, idx) => {
                             return (
                                 <div
-                                    key={'rightRight' + idx}
-                                    className={styles.right_item_container}
+                                    key={'right' + idx}
+                                    className={styles.left_item_container}
                                 >
                                     <FaceCards faceData={faceData} />
                                 </div>
